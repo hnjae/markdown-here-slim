@@ -1,9 +1,9 @@
 # Contributing.md
 
-* Project page: https://github.com/adam-p/markdown-here
-* GitHub Discussions: https://github.com/adam-p/markdown-here/discussions
-* Website: https://markdown-here.com
-* Email me: pritchard.adam@gmail.com
+* Project page: <https://github.com/adam-p/markdown-here>
+* GitHub Discussions: <https://github.com/adam-p/markdown-here/discussions>
+* Website: <https://markdown-here.com>
+* Email me: <pritchard.adam@gmail.com>
 
 ## Code contributions
 
@@ -25,11 +25,10 @@ If you do make any translation changes, or if you have any questions or problems
 
 * [Dustin Engstrom](https://github.com/engstrom) ([PR #151](https://github.com/adam-p/markdown-here/pull/151))
 
-
 ### Translators
 
 * [lambdalice](https://github.com/lambdalice)
-  - Provided an entire Japanese translation and forced the MDH i18n work to get done.
+    * Provided an entire Japanese translation and forced the MDH i18n work to get done.
 
 * [Antoine Proulx](https://crowdin.com/profile/magicienap)
 

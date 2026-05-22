@@ -6,4 +6,4 @@ I furthermore declare that I am authorized and able to make this agreement and s
 
 Signed,
 
-Michael Lynch https://github.com/mtlynch
+Michael Lynch <https://github.com/mtlynch>

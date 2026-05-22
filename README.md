@@ -19,6 +19,7 @@ To discover what can be done with Markdown in *Markdown Here*, check out the [Ma
 ![screenshot of conversion](https://raw.github.com/adam-p/markdown-here/master/store-assets/markdown-here-image1.gimp.png)
 
 ### Table of Contents
+
 **[Installation Instructions](#installation-instructions)**<br>
 **[Usage Instructions](#usage-instructions)**<br>
 **[Troubleshooting](#troubleshooting)**<br>
@@ -137,16 +138,13 @@ For Chrome and Firefox, any changes made in the *Markdown Here* Options are auto
 
 ![screenshot of options](https://raw.githubusercontent.com/adam-p/markdown-here/master/store-assets/markdown-here-chrome-options-1.gimp.png)
 
-
 ## Troubleshooting
 
 See the [Troubleshooting wiki page](https://github.com/adam-p/markdown-here/wiki/Troubleshooting).
 
-
 ## Compatibility
 
 See the [Compatibility wiki page](https://github.com/adam-p/markdown-here/wiki/Compatibility).
-
 
 ## Notes and Miscellaneous
 
@@ -157,19 +155,19 @@ See the [Compatibility wiki page](https://github.com/adam-p/markdown-here/wiki/C
 * Images embedded inline in your Markdown will be retained when you "Markdown Toggle". Gmail allows you to put images inline in your email -- this can be much easier than referencing an external image.
 
 * Email signatures are automatically excluded from conversion. Specifically, anything after the semi-standard `'-- '` (note the trailing space) is left alone.
-  * Note that Hotmail and Yahoo do *not* automatically add the `'-- '` to signatures, so you have to add it yourself.
+    * Note that Hotmail and Yahoo do *not* automatically add the `'-- '` to signatures, so you have to add it yourself.
 
 * The "Markdown Toggle" menu item shows up for more element types than it can correctly render. This is intended to help people realize that they're not using a rich editor. Otherwise they just don't see the menu item and don't know why.
 
 * Styling:
-  * The use of browser-specific styles (-moz-, -webkit-) should be avoided. If used, they may not render correctly for people reading the email in a different browser from the one where the email was sent.
-  * The use of state-dependent styles (like `a:hover`) don't work because they don't match at the time the styles are made explicit. (In email, styles must be explicitly applied to all elements -- stylesheets get stripped.)
+    * The use of browser-specific styles (-moz-, -webkit-) should be avoided. If used, they may not render correctly for people reading the email in a different browser from the one where the email was sent.
+    * The use of state-dependent styles (like `a:hover`) don't work because they don't match at the time the styles are made explicit. (In email, styles must be explicitly applied to all elements -- stylesheets get stripped.)
 
 * For more tweaky features, visit the [Tips and Tricks](https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks) section.
 
 ## Building the Extension Bundles
 
-```
+```text
 cd utils
 node build.js
 ```
@@ -178,7 +176,7 @@ node build.js
 
 Create a file with a `.zip` extension containing these files and directories:
 
-```
+```text
 manifest.json
 common/
 chrome/

@@ -6,4 +6,4 @@ I furthermore declare that I am authorized and able to make this agreement and s
 
 Signed,
 
-Michael Stepner https://github.com/michaelstepner
+Michael Stepner <https://github.com/michaelstepner>
