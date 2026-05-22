@@ -71,7 +71,7 @@
 
         // Get the logo image data
         Utils.getLocalFile(
-          Utils.getLocalURL("/common/images/icon48.png"),
+          Utils.getLocalURL("/common/images/openmoji/color/svg/E25D.svg"),
           "base64",
           (logoBase64) => {
             // Do some rough template replacement

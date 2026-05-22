@@ -6,11 +6,11 @@
   "homepage_url": "https://github.com/hnjae/markdown-here-slim",
   "default_locale": "en",
   "icons": {
-    "16": "common/images/icon16.png",
-    "32": "common/images/icon32.png",
-    "48": "common/images/icon48.png",
-    "128": "common/images/icon128.png",
-    "512": "common/images/icon512.png"
+    "16": "common/images/openmoji/color/svg/E25D.svg",
+    "32": "common/images/openmoji/color/svg/E25D.svg",
+    "48": "common/images/openmoji/color/svg/E25D.svg",
+    "128": "common/images/openmoji/color/svg/E25D.svg",
+    "512": "common/images/openmoji/color/svg/E25D.svg"
   },
   "permissions": ["activeTab", "compose", "menus", "storage"],
   "background": {
@@ -26,23 +26,47 @@
   },
   "action": {
     "default_icon": {
-      "16": "common/images/icon16-button-monochrome.png",
-      "19": "common/images/icon19-button-monochrome.png",
-      "32": "common/images/icon32-button-monochrome.png",
-      "38": "common/images/icon38-button-monochrome.png",
-      "64": "common/images/icon64-button-monochrome.png"
+      "16": "common/images/openmoji/black/svg/E25D.svg",
+      "19": "common/images/openmoji/black/svg/E25D.svg",
+      "32": "common/images/openmoji/black/svg/E25D.svg",
+      "38": "common/images/openmoji/black/svg/E25D.svg",
+      "64": "common/images/openmoji/black/svg/E25D.svg"
     },
+    "theme_icons": [
+      {
+        "dark": "common/images/openmoji/black/svg/E25D.svg",
+        "light": "common/images/openmoji/generated/E25D-light.svg",
+        "size": 16
+      },
+      {
+        "dark": "common/images/openmoji/black/svg/E25D.svg",
+        "light": "common/images/openmoji/generated/E25D-light.svg",
+        "size": 32
+      }
+    ],
     "default_title": "__MSG_toggle_button_tooltip__",
     "browser_style": true
   },
   "compose_action": {
     "default_icon": {
-      "16": "common/images/icon16-button-monochrome.png",
-      "19": "common/images/icon19-button-monochrome.png",
-      "32": "common/images/icon32-button-monochrome.png",
-      "38": "common/images/icon38-button-monochrome.png",
-      "64": "common/images/icon64-button-monochrome.png"
+      "16": "common/images/openmoji/black/svg/E25D.svg",
+      "19": "common/images/openmoji/black/svg/E25D.svg",
+      "32": "common/images/openmoji/black/svg/E25D.svg",
+      "38": "common/images/openmoji/black/svg/E25D.svg",
+      "64": "common/images/openmoji/black/svg/E25D.svg"
     },
+    "theme_icons": [
+      {
+        "dark": "common/images/openmoji/black/svg/E25D.svg",
+        "light": "common/images/openmoji/generated/E25D-light.svg",
+        "size": 16
+      },
+      {
+        "dark": "common/images/openmoji/black/svg/E25D.svg",
+        "light": "common/images/openmoji/generated/E25D-light.svg",
+        "size": 32
+      }
+    ],
     "default_title": "__MSG_toggle_button_tooltip__",
     "browser_style": true
   },

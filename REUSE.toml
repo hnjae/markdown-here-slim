@@ -25,13 +25,10 @@ SPDX-FileCopyrightText = [
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]
-path = [
-  "src/legacy-extension/common/images/*.png",
-  "src/legacy-extension/common/images/*.svg",
-]
-precedence = "closest"
-SPDX-FileCopyrightText = "2015 Austin Anderson"
-SPDX-License-Identifier = "LicenseRef-Markdown-Here-CLA"
+path = ["assets/openmoji/**/E25D.svg"]
+precedence = "override"
+SPDX-FileCopyrightText = "Kai Wanschura / OpenMoji"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
 
 [[annotations]]
 path = "src/legacy-extension/common/marked.js"

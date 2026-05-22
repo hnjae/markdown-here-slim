@@ -21,6 +21,24 @@ var backgroundPage = !!location.hash;
 const actionApi = chrome.action || chrome.browserAction;
 const composeActionApi = chrome.composeAction;
 const menuApi = chrome.contextMenus || chrome.menus;
+const themeDetectorPath = "chrome/theme-detector.html";
+const toolbarIconPaths = {
+  dark: {
+    16: "common/images/icon16-button-monochrome.png",
+    19: "common/images/icon19-button-monochrome.png",
+    32: "common/images/icon32-button-monochrome.png",
+    38: "common/images/icon38-button-monochrome.png",
+    64: "common/images/icon64-button-monochrome.png",
+  },
+  light: {
+    16: "common/images/icon16-button-light.png",
+    19: "common/images/icon19-button-light.png",
+    32: "common/images/icon32-button-light.png",
+    38: "common/images/icon38-button-light.png",
+    64: "common/images/icon64-button-light.png",
+  },
+};
+let creatingThemeDetector;
 
 if (!backgroundPage) {
   // When loaded via a background page, the support scripts are already
@@ -72,6 +90,13 @@ menuApi.onClicked.addListener(async (info, tab) => {
 // revive the service worker, then process the message, then tear down the service worker.
 // See the comment in markdown-render.js for why we use these requests.
 chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
+  if (request.action === "toolbar-theme-change") {
+    if (sender.url === Utils.getLocalURL(`/${themeDetectorPath}`)) {
+      updateToolbarIconForColorScheme(request.scheme);
+    }
+    return false;
+  }
+
   // The content script can load in a not-real tab (like the search box), which
   // has an invalid `sender.tab` value. We should just ignore these pages.
   if (
@@ -118,6 +143,8 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
   }
 });
 
+setupToolbarThemeDetection();
+
 // Add the browserAction (the button in the browser toolbar) listener.
 // This also handles the _execute_action keyboard command automatically.
 actionApi.onClicked.addListener(async (tab) => {
@@ -128,6 +155,55 @@ if (composeActionApi) {
   composeActionApi.onClicked.addListener(async (tab) => {
     await handleActionClick(tab);
   });
+}
+
+function updateToolbarIconForColorScheme(scheme) {
+  if (!chrome.action?.setIcon) {
+    return;
+  }
+
+  // A dark color scheme implies a dark toolbar, so use the light icon variant.
+  const icon =
+    scheme === "dark" ? toolbarIconPaths.light : toolbarIconPaths.dark;
+  chrome.action.setIcon({ path: icon });
+}
+
+async function setupToolbarThemeDetection() {
+  if (
+    backgroundPage ||
+    !chrome.offscreen?.createDocument ||
+    !chrome.runtime.getContexts
+  ) {
+    return;
+  }
+
+  const themeDetectorUrl = Utils.getLocalURL(`/${themeDetectorPath}`);
+  const existingContexts = await chrome.runtime.getContexts({
+    contextTypes: ["OFFSCREEN_DOCUMENT"],
+    documentUrls: [themeDetectorUrl],
+  });
+
+  if (existingContexts.length > 0) {
+    return;
+  }
+
+  if (creatingThemeDetector) {
+    await creatingThemeDetector;
+    return;
+  }
+
+  creatingThemeDetector = chrome.offscreen.createDocument({
+    url: themeDetectorPath,
+    reasons: ["MATCH_MEDIA"],
+    justification:
+      "Detect toolbar color scheme to keep the action icon visible.",
+  });
+
+  try {
+    await creatingThemeDetector;
+  } finally {
+    creatingThemeDetector = null;
+  }
 }
 
 async function executeContentScript(tabId, script) {

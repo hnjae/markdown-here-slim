@@ -12,7 +12,13 @@
     "128": "common/images/icon128.png",
     "512": "common/images/icon512.png"
   },
-  "permissions": ["activeTab", "contextMenus", "storage", "scripting"],
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "offscreen",
+    "storage",
+    "scripting"
+  ],
   "optional_host_permissions": ["http://*/*", "https://*/*"],
   "background": {
     "service_worker": "chrome/backgroundscript.js"

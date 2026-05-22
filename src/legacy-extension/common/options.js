@@ -161,33 +161,11 @@ function localize() {
     }
   });
 
-  // Take this opportunity to show appropriate size images for the pixel
-  // density. This saves us from having to make the `img` tags in the
-  // translated content more complex.
-  // TODO: Change to media queries (and so use background-image style).
-  if (window.devicePixelRatio === 2) {
-    const imageMap = [
-      ["images/icon16.png", "images/icon32.png"],
-      ["images/icon16-button.png", "images/icon32-button.png"],
-      ["images/icon16-monochrome.png", "images/icon32-monochrome.png"],
-      [
-        "images/icon16-button-monochrome.png",
-        "images/icon32-button-monochrome.png",
-      ],
-      [
-        "images/icon16-button-disabled.png",
-        "images/icon32-button-disabled.png",
-      ],
-    ];
-
-    imageMap.forEach(([oldSrc, newSrc]) => {
-      const imgs = document.querySelectorAll(`img[src="${oldSrc}"]`);
-      imgs.forEach((img) => {
-        img.style.width = "16px";
-        img.src = newSrc;
-      });
+  document
+    .querySelectorAll('img[src="images/openmoji/black/svg/E25D.svg"]')
+    .forEach((img) => {
+      img.style.width = "16px";
     });
-  }
 }
 
 // If the CSS changes and the Markdown compose box is rendered, update the

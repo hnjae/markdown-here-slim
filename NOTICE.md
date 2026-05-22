@@ -24,8 +24,5 @@ project surface are preserved in docs/upstream:
 - docs/upstream/PRIVACY.md
 - docs/upstream/contributors/
 
-The Markdown Here logo and derived icon assets in src/common/images are
-Copyright 2015 Austin Anderson. They were licensed to Markdown Here under the
-Markdown Here contributor license agreement preserved at
-docs/upstream/CLA-individual.md. This fork preserves those assets and notices,
-and does not assert that those assets are relicensed under AGPL-3.0-or-later.
+Icon based on OpenMoji "edit" (E25D) by Kai Wanschura / OpenMoji, licensed
+under CC BY-SA 4.0.

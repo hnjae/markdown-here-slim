@@ -1,14 +1,21 @@
 // SPDX-FileCopyrightText: 2026 KIM Hyunjae
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import { cp, mkdir, rm } from "node:fs/promises";
+import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-
+import ts from "typescript";
 import { defineConfig, type PluginOption } from "vite";
+
+import {
+  generateChromeOpenMojiIcons,
+  generateOpenMojiThemeAssets,
+} from "./scripts/generate-openmoji-icons.js";
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 const legacyExtensionRoot = path.join(projectRoot, "src", "legacy-extension");
+const extensionSourceRoot = path.join(projectRoot, "src", "extension");
+const openmojiRoot = path.join(projectRoot, "assets", "openmoji");
 const distRoot = path.join(projectRoot, "dist");
 
 type ExtensionTarget = {
@@ -16,6 +23,7 @@ type ExtensionTarget = {
   manifest: string;
   output: string;
   excludeBackgroundPage: boolean;
+  excludePngIcons: boolean;
 };
 
 const extensionTargets: ExtensionTarget[] = [
@@ -30,6 +38,7 @@ const extensionTargets: ExtensionTarget[] = [
     ),
     output: path.join(distRoot, "chrome"),
     excludeBackgroundPage: true,
+    excludePngIcons: false,
   },
   {
     name: "firefox",
@@ -42,6 +51,7 @@ const extensionTargets: ExtensionTarget[] = [
     ),
     output: path.join(distRoot, "firefox"),
     excludeBackgroundPage: false,
+    excludePngIcons: true,
   },
   {
     name: "thunderbird",
@@ -54,6 +64,7 @@ const extensionTargets: ExtensionTarget[] = [
     ),
     output: path.join(distRoot, "thunderbird"),
     excludeBackgroundPage: false,
+    excludePngIcons: true,
   },
 ];
 
@@ -66,6 +77,12 @@ const complianceEntries = [
   path.join("docs", "upstream"),
 ];
 
+const chromeThemeDetectorRoot = path.join(
+  extensionSourceRoot,
+  "chrome",
+  "theme-detector",
+);
+
 function isExcludedExtensionFile(
   source: string,
   target: ExtensionTarget,
@@ -75,6 +92,9 @@ function isExcludedExtensionFile(
   return (
     (target.excludeBackgroundPage &&
       relativePath === path.join("chrome", "background.html")) ||
+    (target.excludePngIcons &&
+      path.dirname(relativePath) === path.join("common", "images") &&
+      path.extname(relativePath) === ".png") ||
     relativePath.endsWith(".bts") ||
     relativePath.endsWith(".DS_Store") ||
     relativePath.endsWith("desktop.ini") ||
@@ -107,6 +127,20 @@ function extensionCopyPlugin(): PluginOption {
           filter: (source) => !isExcludedExtensionFile(source, target),
         });
         await cp(target.manifest, path.join(target.output, "manifest.json"));
+        await cp(
+          openmojiRoot,
+          path.join(target.output, "common", "images", "openmoji"),
+          { recursive: true },
+        );
+        await generateOpenMojiThemeAssets(
+          path.join(target.output, "common", "images"),
+        );
+        if (target.name === "chrome") {
+          await buildChromeThemeDetector(target.output);
+          await generateChromeOpenMojiIcons(
+            path.join(target.output, "common", "images"),
+          );
+        }
 
         for (const entry of complianceEntries) {
           const source = path.join(projectRoot, entry);
@@ -117,6 +151,28 @@ function extensionCopyPlugin(): PluginOption {
       }
     },
   };
+}
+
+async function buildChromeThemeDetector(output: string): Promise<void> {
+  const outputChromeRoot = path.join(output, "chrome");
+  const sourceTs = path.join(chromeThemeDetectorRoot, "index.ts");
+  const sourceHtml = path.join(chromeThemeDetectorRoot, "index.html");
+  const outputJs = path.join(outputChromeRoot, "theme-detector.js");
+  const outputHtml = path.join(outputChromeRoot, "theme-detector.html");
+
+  const tsSource = await readFile(sourceTs, "utf8");
+  const js = ts.transpileModule(tsSource, {
+    compilerOptions: {
+      module: ts.ModuleKind.None,
+      target: ts.ScriptTarget.ES2024,
+      removeComments: false,
+    },
+    fileName: sourceTs,
+  }).outputText;
+
+  await mkdir(outputChromeRoot, { recursive: true });
+  await writeFile(outputJs, js);
+  await cp(sourceHtml, outputHtml);
 }
 
 export default defineConfig({

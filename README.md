@@ -68,6 +68,8 @@ file-level REUSE metadata says otherwise.
 
 ### Logo
 
-Copyright 2015, [Austin Anderson](https://www.angerson.org/). Licensed to
-Markdown Here under the MDH contributor license agreement preserved in
-[`docs/upstream/CLA-individual.md`](docs/upstream/CLA-individual.md).
+The extension logo and toolbar icon are based on OpenMoji `E25D` ("edit") by
+Kai Wanschura / OpenMoji, licensed under `CC-BY-SA-4.0`.
+
+The source SVG files are stored under [`assets/openmoji/`](assets/openmoji/).
+Chrome PNG icons are generated from those SVGs during the build.
