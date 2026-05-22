@@ -6,7 +6,7 @@ inputs:
       nixpkgs:
         follows: nixpkgs
   nixpkgs:
-    url: github:cachix/devenv-nixpkgs/rolling
+    url: https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1
   treefmt-nix:
     url: github:numtide/treefmt-nix
     inputs:

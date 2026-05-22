@@ -43,9 +43,10 @@ After installing, make sure to reload your webmail or restart Chrome!
 1. Clone this repo.
 2. In Chrome, open the Extensions settings. (Wrench button, Tools, Extensions.)
 3. On the Extensions settings page, click the "Developer Mode" checkbox.
-4. Click the now-visible "Load unpacked extension…" button. Navigate to the directory where you cloned the repo, then the `src` directory under that.
-5. The *Markdown Here* extension should now be visible in your extensions list.
-6. Reload your webmail page (and maybe application) before trying to convert an email.
+4. Build the extension bundles with `pnpm build`.
+5. Click the now-visible "Load unpacked extension…" button. Navigate to the directory where you cloned the repo, then the `dist/chrome` directory under that.
+6. The *Markdown Here* extension should now be visible in your extensions list.
+7. Reload your webmail page before trying to convert an email.
 
 ### Firefox and Thunderbird
 
@@ -168,13 +169,15 @@ See the [Compatibility wiki page](https://github.com/adam-p/markdown-here/wiki/C
 ## Building the Extension Bundles
 
 ```text
-cd utils
-node build.js
+pnpm install
+pnpm build
 ```
 
-### Chrome, Opera, and Firefox (WebExtension) extension
+The Manifest V3 build writes unpacked extensions to `dist/chrome` and
+`dist/firefox`, and packaged archives to `dist/chrome.zip` and
+`dist/firefox.zip`.
 
-Create a file with a `.zip` extension containing these files and directories:
+The unpacked extension contains these runtime directories and files:
 
 ```text
 manifest.json
@@ -182,6 +185,8 @@ common/
 chrome/
 _locales
 ```
+
+Thunderbird builds are not currently produced by this build path.
 
 ## Next Steps
 

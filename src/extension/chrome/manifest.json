@@ -15,7 +15,6 @@
   "permissions": ["activeTab", "contextMenus", "storage", "scripting"],
   "optional_host_permissions": ["http://*/*", "https://*/*"],
   "background": {
-    "page": "chrome/background.html#background-page",
     "service_worker": "chrome/backgroundscript.js"
   },
   "commands": {
@@ -34,17 +33,10 @@
       "38": "common/images/icon38-button-monochrome.png",
       "64": "common/images/icon64-button-monochrome.png"
     },
-    "default_title": "__MSG_toggle_button_tooltip__",
-    "browser_style": true
+    "default_title": "__MSG_toggle_button_tooltip__"
   },
   "options_ui": {
     "page": "common/options.html",
     "open_in_tab": true
-  }
-
-  ,"browser_specific_settings": {
-    "gecko": {
-      "id": "markdown-here-webext@adam.pritchard"
-    }
   }
 }

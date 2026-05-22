@@ -5,15 +5,13 @@
 
 
 DIST_DIR = dist
-UTILS_DIR = utils
 
 .PHONY: all clean build
 
-build: | clean
-	cd $(UTILS_DIR); \
-	node "build.js";
+build:
+	pnpm build
 
 clean:
-	rm -rf $(DIST_DIR)
+	pnpm clean
 
-all: clean build
+all: build

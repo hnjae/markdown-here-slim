@@ -8,10 +8,19 @@
   ...
 }:
 {
+  packages = [
+    pkgs.nodejs_24
+    pkgs.pnpm
+    pkgs.unzip
+  ];
+
   treefmt = {
     enable = true;
     config = {
-      settings.excludes = [ "*.lock" ];
+      settings.excludes = [
+        "*.lock"
+        "pnpm-lock.yaml"
+      ];
 
       programs = {
         # Other formatter:
@@ -26,7 +35,10 @@
 
   git-hooks = {
     package = pkgs.prek;
-    excludes = [ ".*\\.lock$" ];
+    excludes = [
+      ".*\\.lock$"
+      "pnpm-lock\\.yaml"
+    ];
 
     hooks = {
       detect-private-keys.enable = true;

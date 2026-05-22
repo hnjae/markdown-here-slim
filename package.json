@@ -1,0 +1,27 @@
+{
+  "name": "markdown-here-slim",
+  "version": "2.16.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.2.2",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "typecheck": "tsc -p tsconfig.node.json && tsc -p tsconfig.extension.json",
+    "build:extensions:unpacked": "vite build",
+    "build:extensions:zip": "tsx scripts/package-extensions.ts",
+    "build:chrome": "pnpm build:extensions",
+    "build:firefox": "pnpm build:extensions",
+    "build:extensions": "pnpm build:extensions:unpacked && pnpm build:extensions:zip",
+    "build": "pnpm build:extensions"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.3",
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0"
+  }
+}
