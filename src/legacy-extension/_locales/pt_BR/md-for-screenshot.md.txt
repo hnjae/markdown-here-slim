@@ -3,7 +3,7 @@
 *Markdown Here* é uma extensão para Google Chrome, Firefox e Thunderbird que permite que você escreva e-mail em Markdown e converte-o antes de enviá-lo.
 
 * Markdown é **legal**. Ponha `código inline`.
-* Crie links para coisas, como [este projeto](https://github.com/adam-p/markdown-here).
+* Crie links para coisas, como [este projeto](https://github.com/hnjae/markdown-here-slim).
 * Você disse ordenado? **E** uma sub-lista?
   1. Pronto.
   2. E pronto.

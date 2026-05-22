@@ -73,7 +73,7 @@
     "description": "A section title"
   },
   "options_page__advanced_usage": {
-    "message": "O wiele więcej informacji oraz wyjaśnienia funkcji zaawansowanych znajdziesz na <a href=\"https://github.com/adam-p/markdown-here\" target=\"_blank\">stronie projektu Markdown Here</a>. Warto również zapoznać się z opcjami opisanymi poniżej."
+    "message": "O wiele więcej informacji oraz wyjaśnienia funkcji zaawansowanych znajdziesz na <a href=\"https://github.com/hnjae/markdown-here-slim\" target=\"_blank\">stronie projektu Markdown Here</a>. Warto również zapoznać się z opcjami opisanymi poniżej."
   },
   "options_page__basic_usage": {
     "message": "Podstawowe Użycie"
@@ -87,10 +87,10 @@
     "description": "A step in the basic usage instructions"
   },
   "options_page__contributing_1": {
-    "message": "<strong>Jeśli kiedykolwiek umieścił(e/a)ś w e-mailu blok kodu źródłowego, to możesz pomóc ulepszyć Markdown Here.</strong> <a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
+    "message": "<strong>Jeśli kiedykolwiek umieścił(e/a)ś w e-mailu blok kodu źródłowego, to możesz pomóc ulepszyć Markdown Here.</strong> <a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
   },
   "options_page__contributing_2": {
-    "message": "Pomóż udostępnić Markdown Here w twoim języku. <a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md#translation\" target=\"_blank\">Tłumaczenia mile widziane.</a>"
+    "message": "Pomóż udostępnić Markdown Here w twoim języku. <a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md#translation\" target=\"_blank\">Tłumaczenia mile widziane.</a>"
   },
   "options_page__contributing_title": {
     "message": "Współpraca",
@@ -109,7 +109,7 @@
     "message": "Wiesz co ułatwia poprawne działanie Markdown Here w programach Chrome, Firefox, Thunderbird, Safari, Opera, jak i w serwisach Gmail, Yahoo, Hotmail, Blogger, Evernote, itd.? <strong>Kawa!</strong>"
   },
   "options_page__footer_1": {
-    "message": "<em>Markdown Here</em> jest oprogramowaniem otwartym. Odwiedź <a target=\"_blank\" href=\"https://github.com/adam-p/markdown-here\">stronę Github projektu</a> albo <a target=\"_blank\" href=\"https://groups.google.com/forum/?fromgroups=#!forum/markdown-here\">forum \"markdown-here\" w serwisie Google Groups</a> aby zadawać pytania, zgłaszać błędy, prosić o nowe funkcje, lub pomagać w rozwoju projektu.",
+    "message": "<em>Markdown Here</em> jest oprogramowaniem otwartym. Odwiedź <a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim\">stronę Github projektu</a> albo <a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim/discussions\">forum \"markdown-here\" w serwisie Google Groups</a> aby zadawać pytania, zgłaszać błędy, prosić o nowe funkcje, lub pomagać w rozwoju projektu.",
     "description": "part of the page footer text"
   },
   "options_page__footer_2": {
@@ -123,10 +123,10 @@
     "message": "Kiedy wysyłasz e-mail, sprawdza czy zawartość wygląda na zapisaną w języku Markdown, ale nieprzełożoną na tekst wyjściowy (przez kliknięcie \"Przełącz Markdown\") przed wysłaniem. W przypadku problemów z wysyłaniem wiadomości, funkcję tę może być trzeba wyłączyć."
   },
   "options_page__forgot_to_render_3": {
-    "message": "Jeśli musisz to wyłączyć, <em>proszę</em> daj mi znać dlaczego i jak można by to ulepszyć. Zostaw <a href=\"https://groups.google.com/forum/#!forum/markdown-here\" target=\"_blank\">komentarz na forum Google Groups projektu \"markdown-here\"</a> albo <a href=\"https://github.com/adam-p/markdown-here/issues\" target=\"_blank\">zgłoś problem (ang. issue) na stronie Github projektu</a>. Dzięki."
+    "message": "Jeśli musisz to wyłączyć, <em>proszę</em> daj mi znać dlaczego i jak można by to ulepszyć. Zostaw <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">komentarz na forum Google Groups projektu \"markdown-here\"</a> albo <a href=\"https://github.com/hnjae/markdown-here-slim/issues\" target=\"_blank\">zgłoś problem (ang. issue) na stronie Github projektu</a>. Dzięki."
   },
   "options_page__forgot_to_render_4": {
-    "message": "Si cette fonctionnalité ne fonctionne plus pour vous, s'il vous plait faites le nous savoir en créant un post sur le <a href=\"https://groups.google.com/group/markdown-here\" target=\"_blank\">groupe Google \"markdown-here\"</a> ou en créant <a href=\"https://github.com/adam-p/markdown-here/issues\" target=\"_blank\">une issue dans le projet Github</a>. (Le lien avec l'interface web des messageries est fragile et peut parfois se briser.)"
+    "message": "Si cette fonctionnalité ne fonctionne plus pour vous, s'il vous plait faites le nous savoir en créant un post sur le <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">groupe Google \"markdown-here\"</a> ou en créant <a href=\"https://github.com/hnjae/markdown-here-slim/issues\" target=\"_blank\">une issue dans le projet Github</a>. (Le lien avec l'interface web des messageries est fragile et peut parfois se briser.)"
   },
   "options_page__forgot_to_render_label": {
     "message": "<b>Sprawdzaj czy zapomniano przełożyć Markdown na tekst wyjściowy.</b>",
@@ -137,13 +137,13 @@
     "description": "Label for the checkbox that enables the support of 'Github-flavored Markdown' line breaks."
   },
   "options_page__ghdiscussions": {
-    "message": "Ask a question or start a conversation in <a href=\"https://github.com/adam-p/markdown-here/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
+    "message": "Ask a question or start a conversation in <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
   },
   "options_page__header_anchors_enabled_1": {
-    "message": "Ta funkcja świetnie się nadaje do tworzenia spisu treści lub innych linków wewnętrznych do twojej treści. <a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">Dowiedz się jak tego używać na wiki MDH.</a>"
+    "message": "Ta funkcja świetnie się nadaje do tworzenia spisu treści lub innych linków wewnętrznych do twojej treści. <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">Dowiedz się jak tego używać na wiki MDH.</a>"
   },
   "options_page__header_anchors_enabled_2": {
-    "message": "Ta opcja jest domyślnie wyłączona ponieważ <a href=\"https://github.com/adam-p/markdown-here/issues/155\" target=\"_blank\">powoduje \"wizualny hałas\" w programie Thunderbird</a>. (I większość ludzi pewnie nie będzie używać tej funkcji.)"
+    "message": "Ta opcja jest domyślnie wyłączona ponieważ <a href=\"https://github.com/hnjae/markdown-here-slim/issues/155\" target=\"_blank\">powoduje \"wizualny hałas\" w programie Thunderbird</a>. (I większość ludzi pewnie nie będzie używać tej funkcji.)"
   },
   "options_page__header_anchors_enabled_label": {
     "message": "<b>Włącz automatyczne kotwice nagłówków.</b>",
@@ -193,10 +193,10 @@
     "description": "button text for Markdown Toggle button"
   },
   "options_page__mdh_wiki": {
-    "message": "Na <a href=\"https://github.com/adam-p/markdown-here/wiki\" target=\"_blank\">wiki projektu Markdown Here</a> dowiesz się <a href=\"https://github.com/adam-p/markdown-here/wiki/Compatibility\" target=\"_blank\">gdzie jeszcze działa MDH</a> oraz znajdziesz dalsze <a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks\" target=\"_blank\">wskazówki i rady</a>."
+    "message": "Na <a href=\"https://github.com/hnjae/markdown-here-slim/wiki\" target=\"_blank\">wiki projektu Markdown Here</a> dowiesz się <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Compatibility\" target=\"_blank\">gdzie jeszcze działa MDH</a> oraz znajdziesz dalsze <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks\" target=\"_blank\">wskazówki i rady</a>."
   },
   "options_page__next_steps": {
-    "message": "Jeśli interesuje cię przyszłość Markdown Here, zajrzyj do sekcji <a href=\"https://github.com/adam-p/markdown-here#next-steps\" target=\"_blank\">Next Steps</a> w pliku README."
+    "message": "Jeśli interesuje cię przyszłość Markdown Here, zajrzyj do sekcji <a href=\"https://github.com/hnjae/markdown-here-slim#next-steps\" target=\"_blank\">Next Steps</a> w pliku README."
   },
   "options_page__note_default_client_styles": {
     "message": "Niektóre edytory e-mailu oraz przeglądarki narzucają własne style. Te mogą nie być tu widoczne."
@@ -243,7 +243,7 @@
     "description": "text on button to reset Primary Styling CSS"
   },
   "options_page__resources_cheatsheet_link": {
-    "message": "Jeśli dopiero zaczynasz z językiem Markdown <a href=\"https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\">Ściągawka Markdown Here</a> z początkującego zmieni cię w speca."
+    "message": "Jeśli dopiero zaczynasz z językiem Markdown <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\">Ściągawka Markdown Here</a> z początkującego zmieni cię w speca."
   },
   "options_page__resources_title": {
     "message": "Zasoby i Linki",

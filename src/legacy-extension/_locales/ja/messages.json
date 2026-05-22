@@ -73,7 +73,7 @@
     "description": "A section title"
   },
   "options_page__advanced_usage": {
-    "message": "さらなる情報や詳細な使い方が知りたいなら、 <a href=\"https://github.com/adam-p/markdown-here\" target=\"_blank\">Markdown Here project page</a> をご覧ください。"
+    "message": "さらなる情報や詳細な使い方が知りたいなら、 <a href=\"https://github.com/hnjae/markdown-here-slim\" target=\"_blank\">Markdown Here project page</a> をご覧ください。"
   },
   "options_page__basic_usage": {
     "message": "基本的な使い方"
@@ -87,10 +87,10 @@
     "description": "A step in the basic usage instructions"
   },
   "options_page__contributing_1": {
-    "message": "<strong>もしメールにコードブロックを書いたことがあるなら、Markdown Hereをより良くすることができます。</strong> <a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
+    "message": "<strong>もしメールにコードブロックを書いたことがあるなら、Markdown Hereをより良くすることができます。</strong> <a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
   },
   "options_page__contributing_2": {
-    "message": "あなたの言語でMarkdown Hereを使えるように手助けしてください。<a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md#translation\" target=\"_blank\">あなたの翻訳を待っています。</a>"
+    "message": "あなたの言語でMarkdown Hereを使えるように手助けしてください。<a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md#translation\" target=\"_blank\">あなたの翻訳を待っています。</a>"
   },
   "options_page__contributing_title": {
     "message": "開発に協力してください",
@@ -109,7 +109,7 @@
     "message": "Markdown HereがChrome、 Firefox、 Thunderbird、 Safari、 Opera、 Gmail、 Yahoo、 Hotmail、 Blogger、 Evernote、などなどでの動作を保つのに役立ってるものを知りたいかい？ <strong>コーヒーだ!</strong>"
   },
   "options_page__footer_1": {
-    "message": "<em>Markdown Here</em> はオープンソースです。 質問をしたり、バグを報告したり、機能追加の要望をしたり、開発に協力するには、 <a target=\"_blank\" href=\"https://github.com/adam-p/markdown-here\">Github のプロジェクトページ</a> か <a target=\"_blank\" href=\"https://groups.google.com/forum/?fromgroups=#!forum/markdown-here\">Google Group</a> を訪れてください。",
+    "message": "<em>Markdown Here</em> はオープンソースです。 質問をしたり、バグを報告したり、機能追加の要望をしたり、開発に協力するには、 <a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim\">Github のプロジェクトページ</a> か <a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim/discussions\">Google Group</a> を訪れてください。",
     "description": "part of the page footer text"
   },
   "options_page__footer_2": {
@@ -123,7 +123,7 @@
     "message": "メールを送るとき、レンダリングせずに生のMarkdownテキストのまま (つまり、\"Markdown 切り替え\"を押し忘れている) かどうか送信前にチェックします。うっとうしい場合は無効にすることを推奨します。"
   },
   "options_page__forgot_to_render_3": {
-    "message": "もしこれを無効にしたほうがいいと思ったなら、 <em>ぜひ</em> 理由と改善案をお知らせください。 <a href=\"https://groups.google.com/forum/#!forum/markdown-here\" target=\"_blank\">Google Groupに投稿する</a> か <a href=\"https://github.com/adam-p/markdown-here/issues\" target=\"_blank\">Github でIssueを投げ</a> てください。お願いします。"
+    "message": "もしこれを無効にしたほうがいいと思ったなら、 <em>ぜひ</em> 理由と改善案をお知らせください。 <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">Google Groupに投稿する</a> か <a href=\"https://github.com/hnjae/markdown-here-slim/issues\" target=\"_blank\">Github でIssueを投げ</a> てください。お願いします。"
   },
   "options_page__forgot_to_render_label": {
     "message": "<b>\"レンダリング忘れ\" チェックを使う</b>",
@@ -134,13 +134,13 @@
     "description": "Label for the checkbox that enables the support of 'Github-flavored Markdown' line breaks."
   },
   "options_page__ghdiscussions": {
-    "message": "Ask a question or start a conversation in <a href=\"https://github.com/adam-p/markdown-here/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
+    "message": "Ask a question or start a conversation in <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
   },
   "options_page__header_anchors_enabled_1": {
-    "message": "文書に目次やその他の内部リンクを設置したい場合に便利です。<a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">Wikiにて使い方を確認してください。</a>"
+    "message": "文書に目次やその他の内部リンクを設置したい場合に便利です。<a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">Wikiにて使い方を確認してください。</a>"
   },
   "options_page__header_anchors_enabled_2": {
-    "message": "<a href=\"https://github.com/adam-p/markdown-here/issues/155\" target=\"_blank\">Thunderbird で見た目が汚くなる</a>ため、デフォルトでは無効にされています(また、ほとんどの人はこの機能を必要としないでしょう)。"
+    "message": "<a href=\"https://github.com/hnjae/markdown-here-slim/issues/155\" target=\"_blank\">Thunderbird で見た目が汚くなる</a>ため、デフォルトでは無効にされています(また、ほとんどの人はこの機能を必要としないでしょう)。"
   },
   "options_page__header_anchors_enabled_label": {
     "message": "<b>ヘッダーにアンカーリンクを自動で設定する</b>",
@@ -190,10 +190,10 @@
     "description": "button text for Markdown Toggle button"
   },
   "options_page__mdh_wiki": {
-    "message": "<a href=\"https://github.com/adam-p/markdown-here/wiki\" target=\"_blank\">Markdown Here wiki</a> では、 <a href=\"https://github.com/adam-p/markdown-here/wiki/Compatibility\" target=\"_blank\">他にどんな環境で動作するか</a> や、 <a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks\" target=\"_blank\">ヒントや小技</a> などの情報を見ることができます。"
+    "message": "<a href=\"https://github.com/hnjae/markdown-here-slim/wiki\" target=\"_blank\">Markdown Here wiki</a> では、 <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Compatibility\" target=\"_blank\">他にどんな環境で動作するか</a> や、 <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks\" target=\"_blank\">ヒントや小技</a> などの情報を見ることができます。"
   },
   "options_page__next_steps": {
-    "message": "もしMarkdown Hereの目指しているものが気になるなら、 <a href=\"https://github.com/adam-p/markdown-here#next-steps\" target=\"_blank\">Next Steps ブランチ</a> のREADMEをご覧ください。"
+    "message": "もしMarkdown Hereの目指しているものが気になるなら、 <a href=\"https://github.com/hnjae/markdown-here-slim#next-steps\" target=\"_blank\">Next Steps ブランチ</a> のREADMEをご覧ください。"
   },
   "options_page__note_default_client_styles": {
     "message": "いくつかのエディタやメールサービスは独自のスタイリングを行うので、ここでの表示と異なることがあります。"
@@ -240,7 +240,7 @@
     "description": "text on button to reset Primary Styling CSS"
   },
   "options_page__resources_cheatsheet_link": {
-    "message": "もしMarkdownを使うのが初めてなら、 <a href=\"https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\">Markdown Here Cheatsheet</a> を参照してください。"
+    "message": "もしMarkdownを使うのが初めてなら、 <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\">Markdown Here Cheatsheet</a> を参照してください。"
   },
   "options_page__resources_title": {
     "message": "レファレンスとリンク",

@@ -105,19 +105,19 @@
     "description": "A section title"
   },
   "options_page__resources_cheatsheet_link": {
-    "message": "If you're new to Markdown, the <a href=\"https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\">Markdown Here Cheatsheet</a> will make you a pro-star."
+    "message": "If you're new to Markdown, the <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\">Markdown Here Cheatsheet</a> will make you a pro-star."
   },
   "options_page__advanced_usage": {
-    "message": "For lots more info and advanced usage, see the <a href=\"https://github.com/adam-p/markdown-here\" target=\"_blank\">Markdown Here project page</a>. You should also explore the options below."
+    "message": "For lots more info and advanced usage, see the <a href=\"https://github.com/hnjae/markdown-here-slim\" target=\"_blank\">Markdown Here project page</a>. You should also explore the options below."
   },
   "options_page__ghdiscussions": {
-    "message": "Ask a question or start a conversation in <a href=\"https://github.com/adam-p/markdown-here/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
+    "message": "Ask a question or start a conversation in <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
   },
   "options_page__mdh_wiki": {
-    "message": "Visit the <a href=\"https://github.com/adam-p/markdown-here/wiki\" target=\"_blank\">Markdown Here wiki</a> for info about <a href=\"https://github.com/adam-p/markdown-here/wiki/Compatibility\" target=\"_blank\">where else MDH works</a> and more <a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks\" target=\"_blank\">tips and tricks</a>."
+    "message": "Visit the <a href=\"https://github.com/hnjae/markdown-here-slim/wiki\" target=\"_blank\">Markdown Here wiki</a> for info about <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Compatibility\" target=\"_blank\">where else MDH works</a> and more <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks\" target=\"_blank\">tips and tricks</a>."
   },
   "options_page__next_steps": {
-    "message": "If you're interested in what the future holds for Markdown Here, check out the <a href=\"https://github.com/adam-p/markdown-here#next-steps\" target=\"_blank\">Next Steps section</a> of the README."
+    "message": "If you're interested in what the future holds for Markdown Here, check out the <a href=\"https://github.com/hnjae/markdown-here-slim#next-steps\" target=\"_blank\">Next Steps section</a> of the README."
   },
   "options_page__donate_plea_1": {
     "message": "Once you decide Markdown Here is pretty sweet, please help me to buy some flowers for my wife so she's not too upset about how much time I spend working on it. <strong>Thank you!</strong>"
@@ -257,7 +257,7 @@
     "description": "Descriptive text explaining the 'forgot-to-render' feature."
   },
   "options_page__forgot_to_render_4": {
-    "message": "If this feature stops working for you, please let us know by posting in our <a href=\"https://github.com/adam-p/markdown-here/discussions\" target=\"_blank\">GitHub Discussions</a> or by <a href=\"https://github.com/adam-p/markdown-here/issues\" target=\"_blank\">creating an issue</a>. (Hooking into the email sending web UI is brittle and will sometimes break. Letting us know when that happens is useful and appreciated.)",
+    "message": "If this feature stops working for you, please let us know by posting in our <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">GitHub Discussions</a> or by <a href=\"https://github.com/hnjae/markdown-here-slim/issues\" target=\"_blank\">creating an issue</a>. (Hooking into the email sending web UI is brittle and will sometimes break. Letting us know when that happens is useful and appreciated.)",
     "description": "Descriptive text referring to the 'forgot-to-render' feature (which is prone to break when Google changes its webmail code)."
   },
   "options_page__contributing_title": {
@@ -265,13 +265,13 @@
     "description": "A section title"
   },
   "options_page__contributing_1": {
-    "message": "<strong>If you have ever put a code block into an email, then you can help make Markdown Here better.</strong> <a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
+    "message": "<strong>If you have ever put a code block into an email, then you can help make Markdown Here better.</strong> <a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
   },
   "options_page__contributing_2": {
-    "message": "Help make Markdown Here available in your language. <a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md#translation\" target=\"_blank\">Translations are welcome.</a>"
+    "message": "Help make Markdown Here available in your language. <a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md#translation\" target=\"_blank\">Translations are welcome.</a>"
   },
   "options_page__footer_1": {
-    "message": "<em>Markdown Here</em> is open source. To ask questions, report bugs, request features, or contribute, visit the <a target=\"_blank\" href=\"https://github.com/adam-p/markdown-here\">GitHub project page</a> and <a target=\"_blank\" href=\"https://github.com/adam-p/markdown-here/issues\">create an issue</a> or <a target=\"_blank\" href=\"https://github.com/adam-p/markdown-here/discussions\">participate in Discussions</a>.",
+    "message": "<em>Markdown Here</em> is open source. To ask questions, report bugs, request features, or contribute, visit the <a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim\">GitHub project page</a> and <a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim/issues\">create an issue</a> or <a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim/discussions\">participate in Discussions</a>.",
     "description": "part of the page footer text"
   },
   "options_page__footer_2": {
@@ -299,10 +299,10 @@
     "description": "Label for the checkbox that enables the automatic header anchors feature. This means that an 'anchor' is created at every heading (H1, H2, etc.) in the user's Markdown. The user can then create links that will jump to these anchors, like in the table of contents of a document."
   },
   "options_page__header_anchors_enabled_1": {
-    "message": "This is great if you want to put a table of contents or other internal links into your content. <a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">Learn about how to use it in the MDH wiki.</a>"
+    "message": "This is great if you want to put a table of contents or other internal links into your content. <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">Learn about how to use it in the MDH wiki.</a>"
   },
   "options_page__header_anchors_enabled_2": {
-    "message": "It's disabled by default because it <a href=\"https://github.com/adam-p/markdown-here/issues/155\" target=\"_blank\">creates visual noise in Thunderbird</a>. (And most people probably won't use the feature.)"
+    "message": "It's disabled by default because it <a href=\"https://github.com/hnjae/markdown-here-slim/issues/155\" target=\"_blank\">creates visual noise in Thunderbird</a>. (And most people probably won't use the feature.)"
   },
   "options_page__gfm_line_breaks_enabled_label": {
     "message": "<b>Enable GFM line breaks.</b>",

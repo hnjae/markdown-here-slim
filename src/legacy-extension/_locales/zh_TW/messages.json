@@ -73,7 +73,7 @@
     "description": "A section title"
   },
   "options_page__advanced_usage": {
-    "message": "如果要查看更多資訊和用法，參見 <a href=\"https://github.com/adam-p/markdown-here\" target=\"_blank\">Markdown Here專案首頁</a>. 你會在下方看到選項。"
+    "message": "如果要查看更多資訊和用法，參見 <a href=\"https://github.com/hnjae/markdown-here-slim\" target=\"_blank\">Markdown Here專案首頁</a>. 你會在下方看到選項。"
   },
   "options_page__basic_usage": {
     "message": "基本用法"
@@ -87,10 +87,10 @@
     "description": "A step in the basic usage instructions"
   },
   "options_page__contributing_1": {
-    "message": "<strong>如果你曾經在電子郵件上使用程式碼區塊，你就可以幫助Markdown Here做的更好.</strong> <a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
+    "message": "<strong>如果你曾經在電子郵件上使用程式碼區塊，你就可以幫助Markdown Here做的更好.</strong> <a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
   },
   "options_page__contributing_2": {
-    "message": "幫助翻譯Markdown Here。<a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md#translation\" target=\"_blank\">歡迎翻譯。</a>"
+    "message": "幫助翻譯Markdown Here。<a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md#translation\" target=\"_blank\">歡迎翻譯。</a>"
   },
   "options_page__contributing_title": {
     "message": "貢獻",
@@ -109,7 +109,7 @@
     "message": "你知道是什麼幫助Markdown Here在Chrome、Firefox、Thunderbird、Safari、Opera、Gmail、Yahoo、Hotmail、Blogger、Evernote……等等嗎？<strong>咖啡！</strong>"
   },
   "options_page__footer_1": {
-    "message": "<em>Markdown Here</em> 是開源的。要詢問，回報錯誤，請求新功能，或參與開發，請見<a target=\"_blank\" href=\"https://github.com/adam-p/markdown-here\">Github專案首頁</a>或<a target=\"_blank\" href=\"https://groups.google.com/forum/?fromgroups=#!forum/markdown-here\">\"markdown-here\" Google Group</a>.",
+    "message": "<em>Markdown Here</em> 是開源的。要詢問，回報錯誤，請求新功能，或參與開發，請見<a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim\">Github專案首頁</a>或<a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim/discussions\">\"markdown-here\" Google Group</a>.",
     "description": "part of the page footer text"
   },
   "options_page__footer_2": {
@@ -123,7 +123,7 @@
     "message": "當你傳送電子郵件時, 這個選項會檢查郵件內容是不是未算繪的Markdown。這可能會干擾你正常傳送郵件。"
   },
   "options_page__forgot_to_render_3": {
-    "message": "如果你停用了此選項, <em>請</em>告知我為什麼和如何做更好。<a href=\"https://groups.google.com/forum/#!forum/markdown-here\" target=\"_blank\">在\"markdown-here\" Google Group 中發文</a>或是<a href=\"https://github.com/adam-p/markdown-here/issues\" target=\"_blank\">在Github專案建立issue</a>。謝謝。"
+    "message": "如果你停用了此選項, <em>請</em>告知我為什麼和如何做更好。<a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">在\"markdown-here\" Google Group 中發文</a>或是<a href=\"https://github.com/hnjae/markdown-here-slim/issues\" target=\"_blank\">在Github專案建立issue</a>。謝謝。"
   },
   "options_page__forgot_to_render_label": {
     "message": "<b>啟用 \"忘記算繪\" 檢查。</b>",
@@ -134,13 +134,13 @@
     "description": "Label for the checkbox that enables the support of 'Github-flavored Markdown' line breaks."
   },
   "options_page__ghdiscussions": {
-    "message": "Ask a question or start a conversation in <a href=\"https://github.com/adam-p/markdown-here/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
+    "message": "Ask a question or start a conversation in <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
   },
   "options_page__header_anchors_enabled_1": {
-    "message": "如果你想產生大綱或其他內部鍊結，這會很有用。<a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">在MDH wiki中查看如何使用。</a>"
+    "message": "如果你想產生大綱或其他內部鍊結，這會很有用。<a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">在MDH wiki中查看如何使用。</a>"
   },
   "options_page__header_anchors_enabled_2": {
-    "message": "預設停用，因為它會<a href=\"https://github.com/adam-p/markdown-here/issues/155\" target=\"_blank\">在Thunderbird產生視覺干擾</a>。(而且大多數人用不到。)"
+    "message": "預設停用，因為它會<a href=\"https://github.com/hnjae/markdown-here-slim/issues/155\" target=\"_blank\">在Thunderbird產生視覺干擾</a>。(而且大多數人用不到。)"
   },
   "options_page__header_anchors_enabled_label": {
     "message": "<b>自動產生標題錨點。</b>",
@@ -190,10 +190,10 @@
     "description": "button text for Markdown Toggle button"
   },
   "options_page__mdh_wiki": {
-    "message": "訪問 <a href=\"https://github.com/adam-p/markdown-here/wiki\" target=\"_blank\">Markdown Here wiki</a> 以查看 <a href=\"https://github.com/adam-p/markdown-here/wiki/Compatibility\" target=\"_blank\">MDH適用的服務</a> 以及更多 <a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks\" target=\"_blank\">使用提示和竅門</a>。"
+    "message": "訪問 <a href=\"https://github.com/hnjae/markdown-here-slim/wiki\" target=\"_blank\">Markdown Here wiki</a> 以查看 <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Compatibility\" target=\"_blank\">MDH適用的服務</a> 以及更多 <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks\" target=\"_blank\">使用提示和竅門</a>。"
   },
   "options_page__next_steps": {
-    "message": "如果你對Markdown Here的未來發展感興趣，查看 <a href=\"https://github.com/adam-p/markdown-here#next-steps\" target=\"_blank\">README的Next Steps部分</a>。"
+    "message": "如果你對Markdown Here的未來發展感興趣，查看 <a href=\"https://github.com/hnjae/markdown-here-slim#next-steps\" target=\"_blank\">README的Next Steps部分</a>。"
   },
   "options_page__note_default_client_styles": {
     "message": "一些電子郵件編輯器和瀏覽器會加入自己的樣式。這裡可能顯示不出來。"
@@ -240,7 +240,7 @@
     "description": "text on button to reset Primary Styling CSS"
   },
   "options_page__resources_cheatsheet_link": {
-    "message": "如果你剛開始接觸Markdown， <a href=\"https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\">Markdown Here Cheatsheet</a> 是本不錯的入門手冊。"
+    "message": "如果你剛開始接觸Markdown， <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\">Markdown Here Cheatsheet</a> 是本不錯的入門手冊。"
   },
   "options_page__resources_title": {
     "message": "資源和鍊結",

@@ -73,7 +73,7 @@
     "description": "A section title"
   },
   "options_page__advanced_usage": {
-    "message": "Daha fazla bilgi ve ileri seviye kullanım için, <a href=\"https://github.com/adam-p/markdown-here\" target=\"_blank\">Etiketleme proje sayfasına </a> göz at. Burda seçenekleri keşfedebilirsin."
+    "message": "Daha fazla bilgi ve ileri seviye kullanım için, <a href=\"https://github.com/hnjae/markdown-here-slim\" target=\"_blank\">Etiketleme proje sayfasına </a> göz at. Burda seçenekleri keşfedebilirsin."
   },
   "options_page__basic_usage": {
     "message": "Temel Kullanım"
@@ -83,10 +83,10 @@
     "description": "message that shows when user changes have been saved"
   },
   "options_page__contributing_1": {
-    "message": "<strong>Eğer e-posta içerisinde kod bloğu kullandıysanız, o zaman Markdown Here projesini daha iyiye taşımaya yardımcı olabilirsiniz.</strong> <a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
+    "message": "<strong>Eğer e-posta içerisinde kod bloğu kullandıysanız, o zaman Markdown Here projesini daha iyiye taşımaya yardımcı olabilirsiniz.</strong> <a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md\" target=\"_blank\">CONTRIBUTING.md</a>"
   },
   "options_page__contributing_2": {
-    "message": "Markdown Here 'yi kendi dilinde kullanılabilir olması için yardımcı ol. <a href=\"https://github.com/adam-p/markdown-here/blob/master/CONTRIBUTING.md#translation\" target=\"_blank\">Çevirilerinizi Bekleriz..</a>"
+    "message": "Markdown Here 'yi kendi dilinde kullanılabilir olması için yardımcı ol. <a href=\"https://github.com/hnjae/markdown-here-slim/blob/main/CONTRIBUTING.md#translation\" target=\"_blank\">Çevirilerinizi Bekleriz..</a>"
   },
   "options_page__contributing_title": {
     "message": "Katılım",
@@ -105,7 +105,7 @@
     "message": "Markdown Here uygulamasının Chrome, Firefox, Thunderbird, Safari, Opera, Gmail, Yahoo, Hotmail, Blogger, Evernote, vs. de çalışır kalmasının kolay yolu nedir biliyor musun?\n<strong>Kahve!</strong>"
   },
   "options_page__footer_1": {
-    "message": "<em>Markdown Here</em> açık kaynaktır.Soru sormak, hata raporu yollamak, yeni özellik istekleri ya da katkıda bulunmak için,   <a target=\"_blank\" href=\"https://github.com/adam-p/markdown-here\">Github proje sayfamızı</a> yada <a target=\"_blank\" href=\"https://groups.google.com/forum/?fromgroups=#!forum/markdown-here\">\"markdown-here\" Google Grubumuzu</a> ziyaret edin. ",
+    "message": "<em>Markdown Here</em> açık kaynaktır.Soru sormak, hata raporu yollamak, yeni özellik istekleri ya da katkıda bulunmak için,   <a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim\">Github proje sayfamızı</a> yada <a target=\"_blank\" href=\"https://github.com/hnjae/markdown-here-slim/discussions\">\"markdown-here\" Google Grubumuzu</a> ziyaret edin. ",
     "description": "part of the page footer text"
   },
   "options_page__footer_2": {
@@ -119,7 +119,7 @@
     "message": "When you send an email, this checks the content to see if it looks like you wrote it in Markdown, but forgot to render it (i.e., click \"Markdown Toggle\") before sending. This may need to be disabled if it interferes with your ability to send email."
   },
   "options_page__forgot_to_render_3": {
-    "message": "If you find yourself disabling this, <em>please</em> let me know why and how it could be better. Create <a href=\"https://groups.google.com/forum/#!forum/markdown-here\" target=\"_blank\">a post on the \"markdown-here\" Google Group</a> or <a href=\"https://github.com/adam-p/markdown-here/issues\" target=\"_blank\">an issue in the Github project</a>. Thanks."
+    "message": "If you find yourself disabling this, <em>please</em> let me know why and how it could be better. Create <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">a post on the \"markdown-here\" Google Group</a> or <a href=\"https://github.com/hnjae/markdown-here-slim/issues\" target=\"_blank\">an issue in the Github project</a>. Thanks."
   },
   "options_page__forgot_to_render_label": {
     "message": "<b> \"derlemeyi-unuttum\" kontrolünü etkinleştir.</b>",
@@ -130,13 +130,13 @@
     "description": "Label for the checkbox that enables the support of 'Github-flavored Markdown' line breaks."
   },
   "options_page__ghdiscussions": {
-    "message": "Ask a question or start a conversation in <a href=\"https://github.com/adam-p/markdown-here/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
+    "message": "Ask a question or start a conversation in <a href=\"https://github.com/hnjae/markdown-here-slim/discussions\" target=\"_blank\">Markdown Here's GitHub Discussions</a>."
   },
   "options_page__header_anchors_enabled_1": {
-    "message": "Eğer içeriğinize bir içindekiler tablosu yahut başka dahili linkler eklemek isterseniz ki bu harika bi şey. <a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">Nasıl kullanacağınızı MDH wiki de öğrenin.</a>"
+    "message": "Eğer içeriğinize bir içindekiler tablosu yahut başka dahili linkler eklemek isterseniz ki bu harika bi şey. <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks#wiki-header-anchors\" target=\"_blank\">Nasıl kullanacağınızı MDH wiki de öğrenin.</a>"
   },
   "options_page__header_anchors_enabled_2": {
-    "message": "Varsayılanlarda kapalı olarak geliyor çünkü <a href=\"https://github.com/adam-p/markdown-here/issues/155\" target=\"_blank\">Thunderbird'de görüntü kirliliği oluşturuyor</a>.(Ve muhtemelen bir çok insan bu özelliği kullanmayacak.)"
+    "message": "Varsayılanlarda kapalı olarak geliyor çünkü <a href=\"https://github.com/hnjae/markdown-here-slim/issues/155\" target=\"_blank\">Thunderbird'de görüntü kirliliği oluşturuyor</a>.(Ve muhtemelen bir çok insan bu özelliği kullanmayacak.)"
   },
   "options_page__header_anchors_enabled_label": {
     "message": "<b>Otomatik başlık sabitleyicileri etkinleştir.</b>",
@@ -186,10 +186,10 @@
     "description": "button text for Markdown Toggle button"
   },
   "options_page__mdh_wiki": {
-    "message": "Bilgi için <a href=\"https://github.com/adam-p/markdown-here/wiki\" target=\"_blank\">Markdown Here wiki</a> , MDH 'ın başka nerde çalıştığını öğrenmek için <a href=\"https://github.com/adam-p/markdown-here/wiki/Compatibility\" target=\"_blank\"> ve daha fazla <a href=\"https://github.com/adam-p/markdown-here/wiki/Tips-and-Tricks\" target=\"_blank\">ipuçları için</a> ziyaret edin."
+    "message": "Bilgi için <a href=\"https://github.com/hnjae/markdown-here-slim/wiki\" target=\"_blank\">Markdown Here wiki</a> , MDH 'ın başka nerde çalıştığını öğrenmek için <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Compatibility\" target=\"_blank\"> ve daha fazla <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Tips-and-Tricks\" target=\"_blank\">ipuçları için</a> ziyaret edin."
   },
   "options_page__next_steps": {
-    "message": "Eğer Markdown Here uygulamasının bir sonraki aşamasıyla ilgileniyorsan <a href=\"https://github.com/adam-p/markdown-here#next-steps\" target=\"_blank\">Gelecek adım bölümünü</a> oku."
+    "message": "Eğer Markdown Here uygulamasının bir sonraki aşamasıyla ilgileniyorsan <a href=\"https://github.com/hnjae/markdown-here-slim#next-steps\" target=\"_blank\">Gelecek adım bölümünü</a> oku."
   },
   "options_page__note_default_client_styles": {
     "message": "Bazı e-posta düzenleyicileri ve tarayıcılar kendi stillerini dayatıyorlar.Belki onlar burada gözükmeyebilir."
@@ -236,7 +236,7 @@
     "description": "text on button to reset Primary Styling CSS"
   },
   "options_page__resources_cheatsheet_link": {
-    "message": "Eğer etiketleme de yeniysen  <a href=\"https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\"> Etiketleme Kodları </a> seni bir yıldız yapacak."
+    "message": "Eğer etiketleme de yeniysen  <a href=\"https://github.com/hnjae/markdown-here-slim/wiki/Markdown-Here-Cheatsheet\" target=\"_blank\"> Etiketleme Kodları </a> seni bir yıldız yapacak."
   },
   "options_page__resources_title": {
     "message": "Kaynaklar ve Linkler",

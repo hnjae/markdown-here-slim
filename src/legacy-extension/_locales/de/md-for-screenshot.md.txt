@@ -3,7 +3,7 @@
 *Markdown Here* ist eine Erweiterung für Google Chrome, Firefox und Thunderbird die es erlaubt, E-Mail in Markdown zu schreiben und vor dem Verschicken zu rendern.
 
 * Markdown ist **cool**. Sende `Code inline`.
-* Verlinke irgendwohin, z.B. [zu diesem Projekt](https://github.com/adam-p/markdown-here).
+* Verlinke irgendwohin, z.B. [zu diesem Projekt](https://github.com/hnjae/markdown-here-slim).
 * Geordnet? **Und** eine Sub-Liste?
   1. Einfach.
   2. Und getan.

@@ -3,7 +3,7 @@
 *Markdown Here* 是一款谷歌Chrome，Firefox以及Thunderbird的插件，能够让你用Markdown格式写电子邮件并且在发送前检测它。
 
 * Markdown 是**非常酷**的。 把`代码放在行内`。
-* 给文本添加链接， 比如[这个项目](https://github.com/adam-p/markdown-here)。
+* 给文本添加链接， 比如[这个项目](https://github.com/hnjae/markdown-here-slim)。
 * 有序列表，看见了吗？ **同时**一个子列表？
   1. 完成。
   2. 再次完成。

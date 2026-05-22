@@ -237,7 +237,7 @@ clicked.
 
     if (!composeSendButton) {
       Utils.consoleLog(
-        'Markdown Here was unable to find the Gmail "Send" button. Please let the developers know by creating an issue at: https://github.com/adam-p/markdown-here/issues',
+        'Markdown Here was unable to find the Gmail "Send" button. Please let the developers know by creating an issue at: https://github.com/hnjae/markdown-here-slim/issues',
       );
       return;
     }

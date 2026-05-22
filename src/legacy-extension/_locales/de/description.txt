@@ -19,5 +19,4 @@ Verfügbar als Erweiterung für Chrome, Firefox, Safari, Opera, und Thunderbird.
 
 Dieses Projekt ist Open-Source. Siehe die Github-Seite von Markdown Here für weitere Anleitung, Informationen, Bug-Reports, oder um zum Projekt beizutragen.
 
-https://markdown-here.com
-https://github.com/adam-p/markdown-here
+https://github.com/hnjae/markdown-here-slim

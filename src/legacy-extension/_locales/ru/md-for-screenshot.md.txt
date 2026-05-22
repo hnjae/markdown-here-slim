@@ -3,7 +3,7 @@
 * Markdown Here* — расширение Google Chrome, Firefox и Thunderbird, которое позволяет вам написать письмо в Markdown и отрендерить его перед отправкой.
 
 * Markdown -- это **круто**. Запишем `код в строку`.
-* Ссылки на разные штуки, такие как [этот проект] (https://github.com/adam-p/markdown-here).
+* Ссылки на разные штуки, такие как [этот проект] (https://github.com/hnjae/markdown-here-slim).
 * Упорядоченный вы сказали? **И** подсписок?
   1. Есть.
   2. И есть.

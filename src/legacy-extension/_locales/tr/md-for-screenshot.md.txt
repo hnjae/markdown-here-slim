@@ -3,7 +3,7 @@
 *Markdown Here* e-maillerinizi Markdown kullanarak yazıp, göndermeden Markdown haline getiren bir Google Chrome, Firefox, ve Thunderbird ekidir.
 
 * Markdown çok **cool'dur**. Buraya `hizadaki kod koyun`.
-* Link koyun, bu [proje gibi](https://github.com/adam-p/markdown-here).
+* Link koyun, bu [proje gibi](https://github.com/hnjae/markdown-here-slim).
 * Düzenli, diyorsun? **Ve** de bir alt liste?
   1. İşte böyle.
   2. Ve de böyle.
