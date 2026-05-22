@@ -2,3 +2,16 @@
 
 [default]
 locale = "en"
+
+[files]
+extend-exclude = [
+  "LICENSES",
+  "src/_locales/*",
+  "src/common/highlightjs",
+  "src/common/marked.js",
+  "src/common/test",
+  "src/common/vendor/dompurify.min.js",
+]
+
+[default.extend-identifiers]
+curren = "curren"

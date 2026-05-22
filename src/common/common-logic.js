@@ -384,7 +384,7 @@ function probablyWritingMarkdown(mdMaybe, marked, prefs) {
   // I'm worried about incorrectly catching square brackets in rendered code
   // blocks, so we're only going to look for '](' and '][' (which still aren't
   // immune to the problem, but a little better). This means we won't match
-  // reference links (where the text in the square brackes is used elsewhere for
+  // reference links (where the text in the square brackets is used elsewhere for
   // for the link).
   var link = mdMaybe.match(/\]\(|\]\[/);
   if (link) {

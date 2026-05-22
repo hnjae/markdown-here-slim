@@ -338,7 +338,7 @@ function resetCssEdit() {
 }
 document.getElementById('reset-button').addEventListener('click', resetCssEdit, false);
 
-// The syntax hightlighting CSS combo-box selection changed.
+// The syntax highlighting CSS combo-box selection changed.
 function cssSyntaxSelectChange() {
   var selected = cssSyntaxSelect.options[cssSyntaxSelect.selectedIndex].value;
   if (!selected) {

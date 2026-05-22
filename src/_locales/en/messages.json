@@ -71,7 +71,7 @@
     "description": "Error message shown to user if there's nothing found to revert or render."
   },
   "unrendering_modified_markdown_warning": {
-    "message": "The rendered Markdown appears to have been modifed.\nIf you unrender it, your changes since rendering will be lost.\n\nAre you sure you wish to unrender?",
+    "message": "The rendered Markdown appears to have been modified.\nIf you unrender it, your changes since rendering will be lost.\n\nAre you sure you wish to unrender?",
     "description": "Warning shown to the user if she tries to revert some rendered Markdown that they've modified since rendering. The user will lose their modifications if they proceed."
   },
   "options_page__page_title": {

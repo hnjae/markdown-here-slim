@@ -107,7 +107,7 @@ function elementCanBeRendered(elem) {
           (elem.ownerDocument && elem.ownerDocument.designMode === 'on'));
 }
 
-// Get the currectly selected range. If there is no selected range (i.e., it is
+// Get the currently selected range. If there is no selected range (i.e., it is
 // collapsed), then contents of the currently focused element will be selected.
 // Returns null if no range is selected nor can be selected.
 function getOperationalRange(focusedElem) {

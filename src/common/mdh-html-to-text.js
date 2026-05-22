@@ -260,7 +260,7 @@ MdhHtmlToText.prototype.excludeTagBlocks = function(
           // Not a nested tag. Time to escape.
           // Because we've mangled the opening and closing tags, we need to
           // put around them so that they don't get mashed together with the
-          // preceeding and following Markdown.
+          // preceding and following Markdown.
 
           closeTagLength = ('</'+tagName+'>').length;
 
