@@ -18,7 +18,8 @@
 */
 /* .markdown-here-wrapper[data-md-url*="mail.yahoo."] ul { color: red; } */
 
-pre, code {
+pre,
+code {
   font-size: 0.85em;
   font-family: Consolas, Inconsolata, Courier, monospace;
 }
@@ -27,8 +28,8 @@ code {
   margin: 0 0.15em;
   padding: 0 0.3em;
   white-space: pre-wrap;
-  border: 1px solid #EAEAEA;
-  background-color: #F8F8F8;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
   border-radius: 3px;
   display: inline; /* added to fix Yahoo block display of inline code */
 }
@@ -42,7 +43,7 @@ pre code {
   white-space: pre;
   overflow: auto; /* fixes issue #70: Firefox/Thunderbird: Code blocks with horizontal scroll would have bad background colour */
   border-radius: 3px;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   padding: 0.5em 0.7em;
   display: block !important; /* added to counteract the Yahoo-specific `code` rule; without this, code blocks in Blogger are broken */
 }
@@ -69,11 +70,18 @@ p {
   margin: 0 0 1.2em 0 !important;
 }
 
-table, pre, dl, blockquote, q, ul, ol {
+table,
+pre,
+dl,
+blockquote,
+q,
+ul,
+ol {
   margin: 1.2em 0;
 }
 
-ul, ol {
+ul,
+ol {
   padding-left: 2em;
 }
 
@@ -88,18 +96,25 @@ li p {
 }
 
 /* Smaller spacing for sub-lists */
-ul ul, ul ol, ol ul, ol ol {
+ul ul,
+ul ol,
+ol ul,
+ol ol {
   margin: 0;
   padding-left: 1em;
 }
 
 /* Use Roman numerals for sub-ordered-lists. (Like Github.) */
-ol ol, ul ol {
+ol ol,
+ul ol {
   list-style-type: lower-roman;
 }
 
 /* Use letters for sub-sub-ordered lists. (Like Github.) */
-ul ul ol, ul ol ol, ol ul ol, ol ol ol {
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
   list-style-type: lower-alpha;
 }
 
@@ -118,18 +133,27 @@ dl dd {
   padding: 0 1em;
 }
 
-blockquote, q {
-  border-left: 4px solid #DDD;
+blockquote,
+q {
+  border-left: 4px solid #ddd;
   padding: 0 1em;
   color: #777;
   quotes: none;
 }
 
-blockquote::before, blockquote::after, q::before, q::after {
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
   content: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 1.3em 0 1em;
   padding: 0;
   font-weight: bold;
@@ -179,24 +203,25 @@ tbody {
 
 table tr {
   border: 0;
-  border-top: 1px solid #CCC;
+  border-top: 1px solid #ccc;
   background-color: white;
   margin: 0;
   padding: 0;
 }
 
 table tr:nth-child(2n) {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
-table tr th, table tr td {
+table tr th,
+table tr td {
   font-size: 1em;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   margin: 0;
   padding: 0.5em 1em;
 }
 
 table tr th {
- font-weight: bold;
-  background-color: #F0F0F0;
+  font-weight: bold;
+  background-color: #f0f0f0;
 }

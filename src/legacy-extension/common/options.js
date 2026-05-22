@@ -3,7 +3,6 @@
  * MIT License : https://adampritchard.mit-license.org/
  */
 
-"use strict";
 /* jshint browser:true, sub:true */
 /* global OptionsStore:false, chrome:false, marked:false, markdownHere:false, Utils:false,
    MdhHtmlToText:false */
@@ -12,52 +11,70 @@
  * Main script file for the options page.
  */
 
-let cssEdit, cssSyntaxEdit, cssSyntaxSelect, rawMarkdownIframe, savedMsg, mathEnable, mathEdit, forgotToRenderCheckEnabled, headerAnchorsEnabled, gfmLineBreaksEnabled;
+let cssEdit,
+  cssSyntaxEdit,
+  cssSyntaxSelect,
+  rawMarkdownIframe,
+  savedMsg,
+  mathEnable,
+  mathEdit,
+  forgotToRenderCheckEnabled,
+  headerAnchorsEnabled,
+  gfmLineBreaksEnabled;
 let loaded = false;
 
 function onLoad() {
-
-
   localize();
 
   // Set up our control references.
-  cssEdit = document.getElementById('css-edit');
-  cssSyntaxEdit = document.getElementById('css-syntax-edit');
-  cssSyntaxSelect = document.getElementById('css-syntax-select');
-  rawMarkdownIframe = document.getElementById('rendered-markdown');
-  savedMsg = document.getElementById('saved-msg');
-  mathEnable = document.getElementById('math-enable');
-  mathEdit = document.getElementById('math-edit');
-  forgotToRenderCheckEnabled = document.getElementById('forgot-to-render-check-enabled');
-  headerAnchorsEnabled = document.getElementById('header-anchors-enabled');
-  gfmLineBreaksEnabled = document.getElementById('gfm-line-breaks-enabled');
+  cssEdit = document.getElementById("css-edit");
+  cssSyntaxEdit = document.getElementById("css-syntax-edit");
+  cssSyntaxSelect = document.getElementById("css-syntax-select");
+  rawMarkdownIframe = document.getElementById("rendered-markdown");
+  savedMsg = document.getElementById("saved-msg");
+  mathEnable = document.getElementById("math-enable");
+  mathEdit = document.getElementById("math-edit");
+  forgotToRenderCheckEnabled = document.getElementById(
+    "forgot-to-render-check-enabled",
+  );
+  headerAnchorsEnabled = document.getElementById("header-anchors-enabled");
+  gfmLineBreaksEnabled = document.getElementById("gfm-line-breaks-enabled");
 
-  rawMarkdownIframe.addEventListener('load', () => renderMarkdown());
-  rawMarkdownIframe.src = Utils.getLocalURL('/common/options-iframe.html');
+  rawMarkdownIframe.addEventListener("load", () => renderMarkdown());
+  rawMarkdownIframe.src = Utils.getLocalURL("/common/options-iframe.html");
 
-  forgotToRenderCheckEnabled.addEventListener('click', handleForgotToRenderChange, false);
+  forgotToRenderCheckEnabled.addEventListener(
+    "click",
+    handleForgotToRenderChange,
+    false,
+  );
 
-  document.getElementById('extensions-shortcut-link').addEventListener('click', function(event) {
-    event.preventDefault();
-    chrome.tabs.create({ url: 'chrome://extensions/shortcuts' });
-  });
+  document
+    .getElementById("extensions-shortcut-link")
+    .addEventListener("click", (event) => {
+      event.preventDefault();
+      chrome.tabs.create({ url: "chrome://extensions/shortcuts" });
+    });
 
   // Update the hotkey/shortcut value
-  chrome.commands.getAll().then(commands => {
+  chrome.commands.getAll().then((commands) => {
     const shortcut = commands[0].shortcut;
     if (!shortcut) {
       // No shortcut set, or a conflict (that we lose)
-      document.querySelector('.hotkey-current-error').style.display = '';
-      document.querySelectorAll('.hotkey-error-hide').forEach(el => el.style.display = 'none');
-    }
-    else {
-      document.querySelectorAll('.hotkey-current').forEach(el => el.textContent = shortcut);
+      document.querySelector(".hotkey-current-error").style.display = "";
+      document
+        .querySelectorAll(".hotkey-error-hide")
+        .forEach((el) => (el.style.display = "none"));
+    } else {
+      document
+        .querySelectorAll(".hotkey-current")
+        .forEach((el) => (el.textContent = shortcut));
     }
   });
 
   // Listen for runtime messages from the background script
-  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.action === 'button-click') {
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === "button-click") {
       // Handle button click from background script by toggling markdown
       markdownToggle();
     }
@@ -70,36 +87,40 @@ function onLoad() {
 
   // Get the available highlight.js styles.
   Utils.getLocalFile(
-    Utils.getLocalURL('/common/highlightjs/styles/styles.json'),
-    'json',
-    function(syntaxStyles) {
+    Utils.getLocalURL("/common/highlightjs/styles/styles.json"),
+    "json",
+    (syntaxStyles) => {
       for (var name in syntaxStyles) {
         cssSyntaxSelect.options.add(new Option(name, syntaxStyles[name]));
       }
 
-      cssSyntaxSelect.options.add(new Option(Utils.getMessage('currently_in_use'), ''));
+      cssSyntaxSelect.options.add(
+        new Option(Utils.getMessage("currently_in_use"), ""),
+      );
       cssSyntaxSelect.selectedIndex = cssSyntaxSelect.options.length - 1;
 
-      cssSyntaxSelect.addEventListener('change', cssSyntaxSelectChange);
-    });
+      cssSyntaxSelect.addEventListener("change", cssSyntaxSelectChange);
+    },
+  );
 
   //
   // Restore previously set options (asynchronously)
   //
 
   var optionsGetSuccessful = false;
-  OptionsStore.get(function(prefs) {
-    cssEdit.value = prefs['main-css'];
-    cssSyntaxEdit.value = prefs['syntax-css'];
+  OptionsStore.get((prefs) => {
+    cssEdit.value = prefs["main-css"];
+    cssSyntaxEdit.value = prefs["syntax-css"];
 
-    mathEnable.checked = prefs['math-enabled'];
-    mathEdit.value = prefs['math-value'];
+    mathEnable.checked = prefs["math-enabled"];
+    mathEdit.value = prefs["math-value"];
 
-    forgotToRenderCheckEnabled.checked = prefs['forgot-to-render-check-enabled-2'];
+    forgotToRenderCheckEnabled.checked =
+      prefs["forgot-to-render-check-enabled-2"];
 
-    headerAnchorsEnabled.checked = prefs['header-anchors-enabled'];
+    headerAnchorsEnabled.checked = prefs["header-anchors-enabled"];
 
-    gfmLineBreaksEnabled.checked = prefs['gfm-line-breaks-enabled'];
+    gfmLineBreaksEnabled.checked = prefs["gfm-line-breaks-enabled"];
 
     // Start watching for changes to the styles.
     setInterval(checkChange, 100);
@@ -116,26 +137,26 @@ function onLoad() {
   // won't work. So in that case we need to tell the user how they can actually open the
   // options page. This is pretty ungraceful, but few users will encounter it, and fewer as
   // time goes on.
-  setTimeout(function() {
+  setTimeout(() => {
     if (!optionsGetSuccessful) {
-      alert('It looks like you are running an older version of Thunderbird.\nOpen the Markdown Here Options via the message window Tools menu.');
+      alert(
+        "It looks like you are running an older version of Thunderbird.\nOpen the Markdown Here Options via the message window Tools menu.",
+      );
       window.close();
     }
   }, 500);
 
   loaded = true;
 }
-document.addEventListener('DOMContentLoaded', onLoad, false);
-
+document.addEventListener("DOMContentLoaded", onLoad, false);
 
 function localize() {
-  const elements = document.querySelectorAll('[data-i18n]');
-  elements.forEach(function(element) {
-    const messageID = 'options_page__' + element.dataset.i18n;
-    if (element.tagName.toUpperCase() === 'TITLE') {
+  const elements = document.querySelectorAll("[data-i18n]");
+  elements.forEach((element) => {
+    const messageID = "options_page__" + element.dataset.i18n;
+    if (element.tagName.toUpperCase() === "TITLE") {
       element.innerText = Utils.getMessage(messageID);
-    }
-    else {
+    } else {
       Utils.saferSetInnerHTML(element, Utils.getMessage(messageID));
     }
   });
@@ -146,79 +167,88 @@ function localize() {
   // TODO: Change to media queries (and so use background-image style).
   if (window.devicePixelRatio === 2) {
     const imageMap = [
-      ['images/icon16.png', 'images/icon32.png'],
-      ['images/icon16-button.png', 'images/icon32-button.png'],
-      ['images/icon16-monochrome.png', 'images/icon32-monochrome.png'],
-      ['images/icon16-button-monochrome.png', 'images/icon32-button-monochrome.png'],
-      ['images/icon16-button-disabled.png', 'images/icon32-button-disabled.png']
+      ["images/icon16.png", "images/icon32.png"],
+      ["images/icon16-button.png", "images/icon32-button.png"],
+      ["images/icon16-monochrome.png", "images/icon32-monochrome.png"],
+      [
+        "images/icon16-button-monochrome.png",
+        "images/icon32-button-monochrome.png",
+      ],
+      [
+        "images/icon16-button-disabled.png",
+        "images/icon32-button-disabled.png",
+      ],
     ];
 
-    imageMap.forEach(function([oldSrc, newSrc]) {
+    imageMap.forEach(([oldSrc, newSrc]) => {
       const imgs = document.querySelectorAll(`img[src="${oldSrc}"]`);
-      imgs.forEach(function(img) {
-        img.style.width = '16px';
+      imgs.forEach((img) => {
+        img.style.width = "16px";
         img.src = newSrc;
       });
     });
   }
 }
 
-
 // If the CSS changes and the Markdown compose box is rendered, update the
 // rendering by toggling twice. If the compose box is not rendered, do nothing.
 // Groups changes together rather than on every keystroke.
-var lastOptions = '';
+var lastOptions = "";
 var lastChangeTime = null;
 var firstSave = true;
 function checkChange() {
   var newOptions =
-        cssEdit.value + cssSyntaxEdit.value +
-        mathEnable.checked + mathEdit.value +
-        forgotToRenderCheckEnabled.checked + headerAnchorsEnabled.checked +
-        gfmLineBreaksEnabled.checked;
+    cssEdit.value +
+    cssSyntaxEdit.value +
+    mathEnable.checked +
+    mathEdit.value +
+    forgotToRenderCheckEnabled.checked +
+    headerAnchorsEnabled.checked +
+    gfmLineBreaksEnabled.checked;
 
   if (newOptions !== lastOptions) {
     // CSS has changed.
     lastOptions = newOptions;
     lastChangeTime = new Date();
-  }
-  else {
+  } else {
     // No change since the last check.
     // There's a delicate balance to choosing this apply/save-change timeout value.
     // We want the user to see the effects of their change quite quickly, but
     // we don't want to spam our saves (because there are quota limits). But we
     // have to save before we can re-render (the rendering using the saved values).
-    if (lastChangeTime && (new Date() - lastChangeTime) > 400) {
+    if (lastChangeTime && new Date() - lastChangeTime > 400) {
       // Sufficient time has passed since the last change -- time to save.
       lastChangeTime = null;
 
       OptionsStore.set(
         {
-          'main-css': cssEdit.value,
-          'syntax-css': cssSyntaxEdit.value,
-          'math-enabled': mathEnable.checked,
-          'math-value': mathEdit.value,
-          'forgot-to-render-check-enabled-2': forgotToRenderCheckEnabled.checked,
-          'header-anchors-enabled': headerAnchorsEnabled.checked,
-          'gfm-line-breaks-enabled': gfmLineBreaksEnabled.checked
+          "main-css": cssEdit.value,
+          "syntax-css": cssSyntaxEdit.value,
+          "math-enabled": mathEnable.checked,
+          "math-value": mathEdit.value,
+          "forgot-to-render-check-enabled-2":
+            forgotToRenderCheckEnabled.checked,
+          "header-anchors-enabled": headerAnchorsEnabled.checked,
+          "gfm-line-breaks-enabled": gfmLineBreaksEnabled.checked,
         },
-        function() {
+        () => {
           updateMarkdownRender();
 
           // Show the "saved changes" message, unless this is the first save
           // (i.e., the one when the user first opens the options window).
           if (!firstSave) {
-            savedMsg.classList.add('showing');
+            savedMsg.classList.add("showing");
 
             // Hide it a bit later.
             // Alternatively, could use the 'transitionend' event. But this way
             // we control how long it shows.
-            setTimeout(function() {
-              savedMsg.classList.remove('showing');
+            setTimeout(() => {
+              savedMsg.classList.remove("showing");
             }, 2000);
           }
           firstSave = false;
-        });
+        },
+      );
     }
   }
 }
@@ -229,30 +259,35 @@ function requestMarkdownConversion(elem, range, callback) {
 
   Utils.makeRequestToPrivilegedScript(
     document,
-    { action: 'render', mdText: mdhHtmlToText.get() },
-    function(response) {
+    { action: "render", mdText: mdhHtmlToText.get() },
+    (response) => {
       var renderedMarkdown = mdhHtmlToText.postprocess(response.html);
       callback(renderedMarkdown, response.css);
-    });
+    },
+  );
 }
 
 // Render the sample Markdown.
 function renderMarkdown(postRenderCallback) {
-  if (rawMarkdownIframe.contentDocument.querySelector('.markdown-here-wrapper')) {
+  if (
+    rawMarkdownIframe.contentDocument.querySelector(".markdown-here-wrapper")
+  ) {
     // Already rendered.
     if (postRenderCallback) postRenderCallback();
     return;
   }
 
   // Begin rendering.
-  markdownHere(rawMarkdownIframe.contentDocument, requestMarkdownConversionInterceptor);
+  markdownHere(
+    rawMarkdownIframe.contentDocument,
+    requestMarkdownConversionInterceptor,
+  );
 
   // To figure out when the (asynchronous) rendering is complete -- so we
   // can call the `postRenderCallback` -- we'll intercept the callback used
   // by the rendering service.
 
   function requestMarkdownConversionInterceptor(elem, range, callback) {
-
     function callbackInterceptor() {
       callback.apply(null, arguments);
 
@@ -267,20 +302,22 @@ function renderMarkdown(postRenderCallback) {
 
 // Re-render already-rendered sample Markdown.
 function updateMarkdownRender() {
-  if (!rawMarkdownIframe.contentDocument.querySelector('.markdown-here-wrapper')) {
+  if (
+    !rawMarkdownIframe.contentDocument.querySelector(".markdown-here-wrapper")
+  ) {
     // Not currently rendered, so nothing to update.
     return;
   }
 
   // To mitigate flickering, hide the iframe during rendering.
-  rawMarkdownIframe.style.visibility = 'hidden';
+  rawMarkdownIframe.style.visibility = "hidden";
 
   // Unrender
   markdownHere(rawMarkdownIframe.contentDocument, requestMarkdownConversion);
 
   // Re-render
-  renderMarkdown(function() {
-    rawMarkdownIframe.style.visibility = 'visible';
+  renderMarkdown(() => {
+    rawMarkdownIframe.style.visibility = "visible";
   });
 }
 
@@ -288,19 +325,24 @@ function updateMarkdownRender() {
 function markdownToggle() {
   markdownHere(rawMarkdownIframe.contentDocument, requestMarkdownConversion);
 }
-document.querySelector('#markdown-toggle-button').addEventListener('click', markdownToggle, false);
+document
+  .querySelector("#markdown-toggle-button")
+  .addEventListener("click", markdownToggle, false);
 
 // Reset the main CSS to default.
 function resetCssEdit() {
   // Get the default value.
   Utils.getLocalFile(
-    OptionsStore.defaults['main-css']['__defaultFromFile__'],
-    OptionsStore.defaults['main-css']['__dataType__'],
-    function(defaultValue) {
+    OptionsStore.defaults["main-css"]["__defaultFromFile__"],
+    OptionsStore.defaults["main-css"]["__dataType__"],
+    (defaultValue) => {
       cssEdit.value = defaultValue;
-    });
+    },
+  );
 }
-document.getElementById('reset-button').addEventListener('click', resetCssEdit, false);
+document
+  .getElementById("reset-button")
+  .addEventListener("click", resetCssEdit, false);
 
 // The syntax highlighting CSS combo-box selection changed.
 function cssSyntaxSelectChange() {
@@ -312,58 +354,62 @@ function cssSyntaxSelectChange() {
   }
 
   // Remove the "currently in use" option, since it doesn't make sense anymore.
-  if (!cssSyntaxSelect.options[cssSyntaxSelect.options.length-1].value) {
+  if (!cssSyntaxSelect.options[cssSyntaxSelect.options.length - 1].value) {
     cssSyntaxSelect.options.length -= 1;
   }
 
   // Get the CSS for the selected theme.
   Utils.getLocalFile(
-    Utils.getLocalURL('/common/highlightjs/styles/'+selected),
-    'text',
-    css => {
+    Utils.getLocalURL("/common/highlightjs/styles/" + selected),
+    "text",
+    (css) => {
       cssSyntaxEdit.value = css;
-    });
+    },
+  );
 }
 
 function loadChangelist() {
   Utils.getLocalFile(
-    Utils.getLocalURL('/docs/upstream/CHANGES.md'),
-    'text',
-    function(changes) {
+    Utils.getLocalURL("/docs/upstream/CHANGES.md"),
+    "text",
+    (changes) => {
       var markedOptions = {
-            gfm: true,
-            pedantic: false,
-            sanitize: false };
+        gfm: true,
+        pedantic: false,
+        sanitize: false,
+      };
 
       changes = marked(changes, markedOptions);
 
-      Utils.saferSetInnerHTML(document.getElementById('changelist'), changes);
+      Utils.saferSetInnerHTML(document.getElementById("changelist"), changes);
 
-      const prevVer = location.search ? location.search.match(/prevVer=([0-9\.]+)/) : null;
+      const prevVer = location.search
+        ? location.search.match(/prevVer=([0-9.]+)/)
+        : null;
       if (prevVer) {
         const version = prevVer[1]; // capture group
 
-        const changelist = document.getElementById('changelist');
-        const allH2s = changelist.querySelectorAll('h2');
+        const changelist = document.getElementById("changelist");
+        const allH2s = changelist.querySelectorAll("h2");
         let prevVerStart = null;
 
         for (const h2 of allH2s) {
-          if (h2.textContent.match(new RegExp('v'+version+'$'))) {
+          if (h2.textContent.match(new RegExp("v" + version + "$"))) {
             prevVerStart = h2;
             break;
           }
         }
 
-        const firstH1 = changelist.querySelector('h1:first-child');
+        const firstH1 = changelist.querySelector("h1:first-child");
         if (firstH1) {
           // Create and insert the new h2
-          const newH2 = document.createElement('h2');
-          newH2.textContent = Utils.getMessage('new_changelist_items');
-          firstH1.insertAdjacentElement('afterend', newH2);
+          const newH2 = document.createElement("h2");
+          newH2.textContent = Utils.getMessage("new_changelist_items");
+          firstH1.insertAdjacentElement("afterend", newH2);
 
           // Collect elements between newH2 and prevVerStart
-          const wrapper = document.createElement('div');
-          wrapper.className = 'changelist-new';
+          const wrapper = document.createElement("div");
+          wrapper.className = "changelist-new";
 
           let current = newH2.nextElementSibling;
           while (current && current !== prevVerStart) {
@@ -372,59 +418,65 @@ function loadChangelist() {
             current = next;
           }
 
-          newH2.insertAdjacentElement('afterend', wrapper);
+          newH2.insertAdjacentElement("afterend", wrapper);
         }
 
         // Move the changelist section up in the page
-        const changelistContainer = document.getElementById('changelist-container');
-        const pagehead = document.getElementById('pagehead');
-        pagehead.insertAdjacentElement('afterend', changelistContainer);
+        const changelistContainer = document.getElementById(
+          "changelist-container",
+        );
+        const pagehead = document.getElementById("pagehead");
+        pagehead.insertAdjacentElement("afterend", changelistContainer);
       }
-    });
+    },
+  );
 }
 
 // Choose one of the donate pleas to use, and update the donate info so we can
 // A/B test them.
 function showDonatePlea() {
-  const pleas = document.querySelectorAll('.donate-plea');
+  const pleas = document.querySelectorAll(".donate-plea");
   const choice = Math.floor(Math.random() * pleas.length);
   const plea = pleas[choice];
   const pleaId = plea.id;
   const submitType = plea.dataset.submitType;
 
-  const paypalSubmitImage = document.getElementById('paypal-submit-image');
-  const paypalSubmitCss = document.getElementById('paypal-submit-css');
+  const paypalSubmitImage = document.getElementById("paypal-submit-image");
+  const paypalSubmitCss = document.getElementById("paypal-submit-css");
 
   if (paypalSubmitImage && paypalSubmitCss) {
-    if (submitType === 'paypal-submit-image') {
-      paypalSubmitImage.style.display = '';
-      paypalSubmitCss.style.display = 'none';
-    }
-    else {
-      paypalSubmitImage.style.display = 'none';
-      paypalSubmitCss.style.display = '';
+    if (submitType === "paypal-submit-image") {
+      paypalSubmitImage.style.display = "";
+      paypalSubmitCss.style.display = "none";
+    } else {
+      paypalSubmitImage.style.display = "none";
+      paypalSubmitCss.style.display = "";
     }
   }
 
-  plea.classList.remove('donate-plea-hidden');
-  const itemNumberInput = document.querySelector('#donate-button input[name="item_number"]');
+  plea.classList.remove("donate-plea-hidden");
+  const itemNumberInput = document.querySelector(
+    '#donate-button input[name="item_number"]',
+  );
   if (itemNumberInput) {
-    itemNumberInput.value = 'options-page-' + pleaId;
+    itemNumberInput.value = "options-page-" + pleaId;
   }
 }
 
 // Reset the math img tag template to default.
 function resetMathEdit() {
-  mathEdit.value = OptionsStore.defaults['math-value'];
+  mathEdit.value = OptionsStore.defaults["math-value"];
 }
-document.getElementById('math-reset-button').addEventListener('click', resetMathEdit, false);
+document
+  .getElementById("math-reset-button")
+  .addEventListener("click", resetMathEdit, false);
 
 // Handle forgot-to-render checkbox changes
 async function handleForgotToRenderChange(event) {
-  const isThunderbird = navigator.userAgent.indexOf('Thunderbird') !== -1;
+  const isThunderbird = navigator.userAgent.indexOf("Thunderbird") !== -1;
   const origins = isThunderbird
-    ? ['chrome://messenger/content/messengercompose/*'] // TODO: figure out if this is right -- it's probably not an "origin"
-    : ['https://mail.google.com/'];
+    ? ["chrome://messenger/content/messengercompose/*"] // TODO: figure out if this is right -- it's probably not an "origin"
+    : ["https://mail.google.com/"];
 
   if (event.target.checked) {
     // We're enabling forgot-to-render, so request permissions
@@ -438,7 +490,7 @@ async function handleForgotToRenderChange(event) {
     // User is disabling forgot-to-render - remove permissions
     const removed = await ContentPermissions.removePermissions(origins);
     if (!removed) {
-      console.error('Failed to remove permissions');
+      console.error("Failed to remove permissions");
     }
   }
 }

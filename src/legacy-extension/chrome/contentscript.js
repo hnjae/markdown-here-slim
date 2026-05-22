@@ -3,11 +3,9 @@
  * MIT License : https://adampritchard.mit-license.org/
  */
 
-"use strict";
 /*global chrome:false, markdownHere:false, CommonLogic:false, htmlToText:false,
     Utils:false, MdhHtmlToText:false, marked:false*/
 /*jshint devel:true, browser:true*/
-
 
 /*
  * Chrome-specific code for responding to the context menu item and providing
@@ -17,11 +15,9 @@
  * Scripts are now injected on-demand when the user activates the extension.
  */
 
-
 // Handle the menu-item click
 function requestHandler(request, sender, sendResponse) {
-  if (request && request.action === 'button-click') {
-
+  if (request && request.action === "button-click") {
     // Check if the focused element is a valid render target
     const focusedElem = markdownHere.findFocusedElem(window.document);
     if (!focusedElem) {
@@ -30,19 +26,22 @@ function requestHandler(request, sender, sendResponse) {
     }
 
     if (!markdownHere.elementCanBeRendered(focusedElem)) {
-      alert(Utils.getMessage('invalid_field'));
+      alert(Utils.getMessage("invalid_field"));
       return false;
     }
 
-    const logger = function() { console.log.apply(console, arguments); };
+    const logger = function () {
+      console.log.apply(console, arguments);
+    };
 
     const mdReturn = markdownHere(
-                document,
-                requestMarkdownConversion,
-                logger,
-                markdownRenderComplete);
+      document,
+      requestMarkdownConversion,
+      logger,
+      markdownRenderComplete,
+    );
 
-    if (typeof(mdReturn) === 'string') {
+    if (typeof mdReturn === "string") {
       // Error message was returned.
       alert(mdReturn);
       return false;
@@ -50,7 +49,6 @@ function requestHandler(request, sender, sendResponse) {
   }
 }
 chrome.runtime.onMessage.addListener(requestHandler);
-
 
 // The rendering service provided to the content script.
 // See the comment in markdown-render.js for why we do this.
@@ -60,19 +58,18 @@ function requestMarkdownConversion(elem, range, callback) {
   // Send a request to the add-on script to actually do the rendering.
   Utils.makeRequestToPrivilegedScript(
     document,
-    { action: 'render', mdText: mdhHtmlToText.get() },
-    function(response) {
+    { action: "render", mdText: mdhHtmlToText.get() },
+    (response) => {
       var renderedMarkdown = mdhHtmlToText.postprocess(response.html);
       callback(renderedMarkdown, response.css);
-    });
+    },
+  );
 }
-
 
 // When rendering (or unrendering) completed
 function markdownRenderComplete(elem, rendered) {
   // No-op for now
 }
-
 
 /*
  * Forgot-to-render check
@@ -84,19 +81,22 @@ let forgotToRenderIntervalCheckPrefs = null;
 // Get the options for the forgot-to-render check
 Utils.makeRequestToPrivilegedScript(
   document,
-  { action: 'get-options' },
-  function(prefs) {
+  { action: "get-options" },
+  (prefs) => {
     forgotToRenderIntervalCheckPrefs = prefs;
-  });
+  },
+);
 
 // Check periodically if we should set up forgot-to-render hooks
 function forgotToRenderCheck() {
-  if (!forgotToRenderIntervalCheckPrefs ||
-      !forgotToRenderIntervalCheckPrefs['forgot-to-render-check-enabled-2']) {
+  if (
+    !forgotToRenderIntervalCheckPrefs ||
+    !forgotToRenderIntervalCheckPrefs["forgot-to-render-check-enabled-2"]
+  ) {
     return;
   }
 
-  let focusedElem = markdownHere.findFocusedElem(window.document);
+  const focusedElem = markdownHere.findFocusedElem(window.document);
   if (!focusedElem) {
     return;
   }
@@ -106,7 +106,8 @@ function forgotToRenderCheck() {
     markdownHere,
     MdhHtmlToText,
     marked,
-    forgotToRenderIntervalCheckPrefs);
+    forgotToRenderIntervalCheckPrefs,
+  );
 }
 
 // Run the check every 2 seconds to catch dynamically loaded elements

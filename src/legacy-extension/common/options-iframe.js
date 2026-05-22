@@ -12,7 +12,7 @@ function onLoad() {
   sel.removeAllRanges();
   sel.addRange(range);
 
-  const demoMarkdown = Utils.getMessage('options_page__preview_markdown');
+  const demoMarkdown = Utils.getMessage("options_page__preview_markdown");
   Utils.saferSetInnerHTML(document.body, demoMarkdown);
 }
-document.addEventListener('DOMContentLoaded', onLoad, false);
+document.addEventListener("DOMContentLoaded", onLoad, false);

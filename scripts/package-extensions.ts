@@ -1,14 +1,14 @@
 // SPDX-FileCopyrightText: 2026 KIM Hyunjae
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-import archiver from 'archiver';
-import { createWriteStream } from 'node:fs';
-import { mkdir } from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { createWriteStream } from "node:fs";
+import { mkdir } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import archiver from "archiver";
 
 const projectRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const distRoot = path.join(projectRoot, 'dist');
+const distRoot = path.join(projectRoot, "dist");
 
 await mkdir(distRoot, { recursive: true });
 
@@ -17,12 +17,12 @@ async function packageExtension(targetName: string): Promise<void> {
   const targetZip = path.join(distRoot, `${targetName}.zip`);
 
   const output = createWriteStream(targetZip);
-  const archive = archiver('zip', { zlib: { level: 9 } });
+  const archive = archiver("zip", { zlib: { level: 9 } });
 
   const result = new Promise<void>((resolve, reject) => {
-    output.on('close', resolve);
-    output.on('error', reject);
-    archive.on('error', reject);
+    output.on("close", resolve);
+    output.on("error", reject);
+    archive.on("error", reject);
   });
 
   archive.pipe(output);
@@ -33,5 +33,5 @@ async function packageExtension(targetName: string): Promise<void> {
   console.log(`Built ${path.relative(projectRoot, targetZip)}`);
 }
 
-await packageExtension('chrome');
-await packageExtension('firefox');
+await packageExtension("chrome");
+await packageExtension("firefox");
