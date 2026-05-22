@@ -1,5 +1,54 @@
 # markdown-here-slim
 
+## Build
+
+```sh
+pnpm install
+pnpm run build
+```
+
+The build writes unpacked extensions and packaged archives under `dist/`:
+
+- `dist/chrome/` and `dist/chrome.zip`
+- `dist/firefox/` and `dist/firefox.zip`
+- `dist/thunderbird/` and `dist/thunderbird.xpi`
+
+## Installation
+
+### Chrome
+
+For local use, install the unpacked extension:
+
+1. Build the extension with `pnpm run build`.
+2. Open `chrome://extensions`.
+3. Enable `Developer mode`.
+4. Click `Load unpacked`.
+5. Select the `dist/chrome/` directory.
+
+`dist/chrome.zip` is the packaged archive. Chrome's local developer install flow
+uses the unpacked directory, not the zip file.
+
+### Firefox
+
+For a temporary local install:
+
+1. Build the extension with `pnpm run build`.
+2. Open `about:debugging#/runtime/this-firefox`.
+3. Click `Load Temporary Add-on...`.
+4. Select `dist/firefox/manifest.json` or `dist/firefox.zip`.
+
+Temporary Firefox add-ons are removed when Firefox restarts. A persistent
+install requires a signed package.
+
+### Thunderbird
+
+For local use:
+
+1. Build the extension with `pnpm run build`.
+2. Open Thunderbird's Add-ons Manager.
+3. Choose `Install Add-on From File...`.
+4. Select `dist/thunderbird.xpi`.
+
 ## License
 
 Unless a file is marked otherwise in [`REUSE.toml`](REUSE.toml), this
