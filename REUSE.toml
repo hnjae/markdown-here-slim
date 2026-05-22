@@ -95,6 +95,7 @@ path = [
   "devenv.lock",
   "devenv.nix",
   "devenv.yaml",
+  "docs/research/*.md",
   "LICENSE",
   "package.json",
   "pnpm-lock.yaml",
