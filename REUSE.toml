@@ -1,0 +1,119 @@
+version = 1
+
+[[annotations]]
+path = [
+  "**",
+  ".eslintrc.json",
+  ".gitattributes",
+  ".github/**",
+  ".gitignore",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = [
+  "2013-2016 Adam Pritchard",
+  "Contributors to Markdown Here",
+  "Contributors to markdown-here-slim",
+]
+SPDX-License-Identifier = "MIT AND AGPL-3.0-or-later"
+
+[[annotations]]
+path = [
+  "src/common/images/*.png",
+  "src/common/images/*.svg",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = "2015 Austin Anderson"
+SPDX-License-Identifier = "LicenseRef-Markdown-Here-CLA"
+
+[[annotations]]
+path = [
+  "store-assets/*.jpg",
+  "store-assets/*.png",
+  "store-assets/*.xcf",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = "2015 Adam Pritchard"
+SPDX-License-Identifier = "CC-BY-3.0"
+
+[[annotations]]
+path = "src/common/marked.js"
+precedence = "closest"
+SPDX-FileCopyrightText = "2011-2013 Christopher Jeffrey"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
+  "src/common/test/chai.js",
+  "src/common/test/mocha.js",
+  "src/common/test/underscore.js",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = [
+  "2011-2013 Jake Luer",
+  "2011 TJ Holowaychuk",
+  "2009-2013 Jeremy Ashkenas, DocumentCloud Inc.",
+]
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "src/common/jsHtmlToText.js"
+precedence = "closest"
+SPDX-FileCopyrightText = [
+  "2006 Google Inc.",
+  "2015 Adam Pritchard",
+  "Contributors to markdown-here-slim",
+]
+SPDX-License-Identifier = "Apache-2.0 AND MIT AND AGPL-3.0-or-later"
+
+[[annotations]]
+path = "src/common/vendor/dompurify.min.js"
+precedence = "closest"
+SPDX-FileCopyrightText = "Cure53 and other contributors"
+SPDX-License-Identifier = "Apache-2.0 OR MPL-2.0"
+
+[[annotations]]
+path = [
+  "src/common/highlightjs/highlight.js",
+  "src/common/highlightjs/styles/*.css",
+  "src/common/highlightjs/styles/styles.json",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = "2006-2025 Josh Goebel and other highlight.js contributors"
+SPDX-License-Identifier = "BSD-3-Clause"
+
+[[annotations]]
+path = "src/common/highlightjs/styles/base16/*.css"
+precedence = "closest"
+SPDX-FileCopyrightText = "base16-schemes-source contributors"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
+  "src/common/highlightjs/styles/night-owl.css",
+  "src/common/highlightjs/styles/nord.css",
+  "src/common/highlightjs/styles/stackoverflow-dark.css",
+  "src/common/highlightjs/styles/stackoverflow-light.css",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = [
+  "Carl Baxter",
+  "2018 Sarah Drasner",
+  "2017-present Arctic Ice Studio",
+  "2017-present Sven Greb",
+  "Stack Exchange Inc.",
+]
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = [
+  "src/common/highlightjs/styles/kimbie-dark.css",
+  "src/common/highlightjs/styles/kimbie-light.css",
+  "src/common/highlightjs/styles/nnfx-dark.css",
+  "src/common/highlightjs/styles/nnfx-light.css",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = [
+  "Jan T. Sott",
+  "2020-2021 Jim Mason",
+]
+SPDX-License-Identifier = "CC-BY-SA-4.0"

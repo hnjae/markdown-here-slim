@@ -1,0 +1,9 @@
+Markdown Here CLA Notice
+
+The Markdown Here logo and derived icon assets in src/common/images are
+Copyright 2015 Austin Anderson.
+
+They were licensed to Markdown Here under the Markdown Here contributor
+license agreement included in this repository as CLA-individual.md. This fork
+preserves those upstream assets and notices. This fork does not assert that
+those assets are relicensed under AGPL-3.0-or-later.

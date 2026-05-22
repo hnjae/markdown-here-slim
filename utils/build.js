@@ -19,6 +19,8 @@ var DIST_DIR = file.path.join(BASE_DIR, 'dist');
 var CHROME_EXTENSION = file.path.join(DIST_DIR, 'chrome.zip');
 var FIREFOX_EXTENSION = file.path.join(DIST_DIR, 'firefox.zip');
 var THUNDERBIRD_EXTENSION = file.path.join(DIST_DIR, 'thunderbird.xpi');
+var LICENSES_DIR = file.path.join(BASE_DIR, 'LICENSES');
+var ROOT_COMPLIANCE_FILES = ['LICENSE', 'REUSE.toml', 'README.md', 'CLA-individual.md', 'CLA-entity.md'];
 
 var CHROME_INPUT = [/^manifest\.json$/, /^common(\\|\/)/, /^chrome(\\|\/)/, /^_locales(\\|\/)/];
 var FIREFOX_INPUT = CHROME_INPUT;
@@ -68,6 +70,27 @@ function addBuildFile(platformName, zip, fullPath, zipPath) {
   else {
     zip.file(fullPath, { name: zipPath });
   }
+}
+
+
+function addComplianceFiles(zip) {
+  ROOT_COMPLIANCE_FILES.forEach(function(rootFile) {
+    var fullPath = file.path.join(BASE_DIR, rootFile);
+    if (fs.existsSync(fullPath)) {
+      zip.file(fullPath, { name: rootFile });
+    }
+  });
+
+  if (!fs.existsSync(LICENSES_DIR)) {
+    return;
+  }
+
+  fs.readdirSync(LICENSES_DIR).forEach(function(licenseFile) {
+    var fullPath = file.path.join(LICENSES_DIR, licenseFile);
+    if (fs.statSync(fullPath).isFile()) {
+      zip.file(fullPath, { name: 'LICENSES/' + licenseFile });
+    }
+  });
 }
 
 
@@ -141,6 +164,10 @@ function main() {
         addBuildFile(THUNDERBIRD_PLATFORM, zips.thunderbird, fullPath, fnameThunderbird);
       }
     }
+  });
+
+  Object.keys(zips).forEach(function(platformName) {
+    addComplianceFiles(zips[platformName]);
   });
 
   zips.chrome.finalize();

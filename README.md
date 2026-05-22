@@ -207,9 +207,17 @@ All bugs, feature requests, pull requests, feedback, etc., are welcome. [Create 
 
 ## License
 
+Unless a file is marked otherwise in [`REUSE.toml`](REUSE.toml), this fork's
+project-specific files and modifications are distributed under
+`AGPL-3.0-or-later`. Upstream Markdown Here material and third-party files keep
+their original copyright and license notices. Full license texts are stored in
+[`LICENSES/`](LICENSES/).
+
 ### Code
 
-MIT License: https://adampritchard.mit-license.org/ or see [the `LICENSE` file](https://github.com/adam-p/markdown-here/blob/master/LICENSE).
+Original Markdown Here code remains subject to the upstream MIT License notice.
+This fork's project-specific files and modifications are licensed under
+`AGPL-3.0-or-later` unless file-level REUSE metadata says otherwise.
 
 ### Logo
 
