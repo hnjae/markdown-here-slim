@@ -2,17 +2,11 @@ version = 1
 
 [[annotations]]
 path = [
-  ".eslintrc.json",
-  ".gitattributes",
-  ".github/**",
   ".gitignore",
-  "Makefile",
   "README.md",
   "src/extension/chrome/manifest.json",
   "src/extension/firefox/manifest.json",
   "src/legacy-extension/**",
-  "store-assets/*.txt",
-  "test/**",
 ]
 precedence = "closest"
 SPDX-FileCopyrightText = [
@@ -41,29 +35,9 @@ SPDX-FileCopyrightText = "2015 Austin Anderson"
 SPDX-License-Identifier = "LicenseRef-Markdown-Here-CLA"
 
 [[annotations]]
-path = ["store-assets/*.jpg", "store-assets/*.png", "store-assets/*.xcf"]
-precedence = "closest"
-SPDX-FileCopyrightText = "2015 Adam Pritchard"
-SPDX-License-Identifier = "CC-BY-3.0"
-
-[[annotations]]
 path = "src/legacy-extension/common/marked.js"
 precedence = "closest"
 SPDX-FileCopyrightText = "2011-2013 Christopher Jeffrey"
-SPDX-License-Identifier = "MIT"
-
-[[annotations]]
-path = [
-  "src/legacy-extension/common/test/chai.js",
-  "src/legacy-extension/common/test/mocha.js",
-  "src/legacy-extension/common/test/underscore.js",
-]
-precedence = "closest"
-SPDX-FileCopyrightText = [
-  "2011-2013 Jake Luer",
-  "2011 TJ Holowaychuk",
-  "2009-2013 Jeremy Ashkenas, DocumentCloud Inc.",
-]
 SPDX-License-Identifier = "MIT"
 
 [[annotations]]

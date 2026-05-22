@@ -9,7 +9,6 @@ extend-exclude = [
   "src/legacy-extension/_locales/*",
   "src/legacy-extension/common/highlightjs",
   "src/legacy-extension/common/marked.js",
-  "src/legacy-extension/common/test",
   "src/legacy-extension/common/vendor/dompurify.min.js",
 ]
 

@@ -46,9 +46,7 @@ function isExcludedExtensionFile(source: string, target: ExtensionTarget): boole
   const relativePath = path.relative(legacyExtensionRoot, source);
 
   return (
-    relativePath === path.join('common', 'test') ||
     (target.excludeBackgroundPage && relativePath === path.join('chrome', 'background.html')) ||
-    relativePath.startsWith(path.join('common', 'test') + path.sep) ||
     relativePath.endsWith('.bts') ||
     relativePath.endsWith('.DS_Store') ||
     relativePath.endsWith('desktop.ini') ||

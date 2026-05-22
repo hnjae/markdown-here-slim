@@ -112,42 +112,6 @@ function onLoad() {
 
   showDonatePlea();
 
-  // Special effort is required to open the test page in these clients.
-  if (navigator.userAgent.indexOf('Thunderbird') >= 0 ||
-      navigator.userAgent.indexOf('Zotero') >= 0) {
-    const testsLink = document.getElementById('tests-link');
-    testsLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      const link = testsLink.querySelector('a');
-      Utils.makeRequestToPrivilegedScript(
-        document,
-        { action: 'open-tab', url: link.href });
-    });
-  }
-
-  // Hide the tests link if the page isn't available. It may be stripped out
-  // of extension packages.
-
-  // Check if our test file exists. Note that we can't use Utils.getLocalFile as it throws
-  // an asynchronous error if the file isn't found.
-  // TODO: When Utils.getLocalFile is changed to return a promise, use it here.
-  fetch('./test/index.html')
-    .then(response => {
-      if (!response.ok) {
-        // The test files aren't present, so hide the button.
-        document.getElementById('tests-link').style.display = 'none';
-      }
-      else {
-        // When the file is absent, Firefox still gives a 200 status, but will throw an
-        // error when the response is read.
-        return response.text();
-      }
-    })
-    .catch(err => {
-      // The test files aren't present, so hide the button.
-      document.getElementById('tests-link').style.display = 'none';
-    });
-
   // Older Thunderbird may try to open this options page in a new ChromeWindow, and it
   // won't work. So in that case we need to tell the user how they can actually open the
   // options page. This is pretty ungraceful, but few users will encounter it, and fewer as
