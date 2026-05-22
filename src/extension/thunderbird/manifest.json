@@ -12,7 +12,7 @@
     "128": "common/images/openmoji/color/svg/E25D.svg",
     "512": "common/images/openmoji/color/svg/E25D.svg"
   },
-  "permissions": ["activeTab", "compose", "menus", "storage"],
+  "permissions": ["activeTab", "compose", "menus"],
   "background": {
     "page": "chrome/background.html#background-page"
   },
@@ -68,11 +68,6 @@
       }
     ],
     "default_title": "__MSG_toggle_button_tooltip__",
-    "browser_style": true
-  },
-  "options_ui": {
-    "page": "common/options.html",
-    "open_in_tab": true,
     "browser_style": true
   },
   "browser_specific_settings": {

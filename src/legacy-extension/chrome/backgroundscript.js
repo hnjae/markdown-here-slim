@@ -263,20 +263,6 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
 
 // Handle a click on the action button or context menu item
 async function handleActionClick(tab, info = undefined) {
-  // Check if the current tab is the options page
-  const optionsPageUrl = Utils.getLocalURL("/common/options.html");
-
-  if (tab.url?.startsWith(optionsPageUrl)) {
-    // For the options page, send a runtime message directly without injection
-    // (because injection won't work on the options page).
-    chrome.tabs.sendMessage(tab.id, {
-      action: "button-click",
-      info: info,
-    });
-    return true;
-  }
-
-  // For all other pages, proceed with the normal injection flow
   const injected = await Injector.injectScripts(tab.id);
 
   if (!injected) {

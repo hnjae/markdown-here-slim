@@ -12,7 +12,7 @@
     "128": "common/images/openmoji/color/svg/E25D.svg",
     "512": "common/images/openmoji/color/svg/E25D.svg"
   },
-  "permissions": ["activeTab", "contextMenus", "storage", "scripting"],
+  "permissions": ["activeTab", "contextMenus", "scripting"],
   "optional_host_permissions": ["http://*/*", "https://*/*"],
   "background": {
     "page": "chrome/background.html#background-page"
@@ -47,10 +47,6 @@
     ],
     "default_title": "__MSG_toggle_button_tooltip__",
     "browser_style": true
-  },
-  "options_ui": {
-    "page": "common/options.html",
-    "open_in_tab": true
   },
   "browser_specific_settings": {
     "gecko": {
