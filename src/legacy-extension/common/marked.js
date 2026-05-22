@@ -4,6 +4,7 @@
  * https://github.com/chjj/marked
  */
 
+/* biome-ignore-all lint: vendored Marked parser */
 (function () {
   /**
    * Block-Level Grammar
@@ -33,7 +34,7 @@
   block.list = replace(block.list)(/bull/g, block.bullet)(
     "hr",
     "\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))",
-  )("def", "\\n+(?=" + block.def.source + ")")();
+  )("def", `\\n+(?=${block.def.source})`)();
 
   block.blockquote = replace(block.blockquote)("def", block.def)();
 
@@ -53,7 +54,7 @@
     block.heading,
   )("lheading", block.lheading)("blockquote", block.blockquote)(
     "tag",
-    "<" + block._tag,
+    `<${block._tag}`,
   )("def", block.def)();
 
   /**
@@ -141,7 +142,7 @@
    * Lexing
    */
 
-  Lexer.prototype.token = function (src, top, bq) {
+  Lexer.prototype.token = function (_src, top, bq) {
     var src = src.replace(/^ +$/gm, ""),
       next,
       loose,
@@ -301,7 +302,7 @@
           if (~item.indexOf("\n ")) {
             space -= item.length;
             item = !this.options.pedantic
-              ? item.replace(new RegExp("^ {1," + space + "}", "gm"), "")
+              ? item.replace(new RegExp(`^ {1,${space}}`, "gm"), "")
               : item.replace(/^ {1,4}/gm, "");
           }
 
@@ -423,7 +424,7 @@
       }
 
       if (src) {
-        throw new Error("Infinite loop on byte: " + src.charCodeAt(0));
+        throw new Error(`Infinite loop on byte: ${src.charCodeAt(0)}`);
       }
     }
 
@@ -624,7 +625,7 @@
         src = src.substring(cap[0].length);
         link = (cap[2] || cap[1]).replace(/\s+/g, " ");
         link = this.links[link.toLowerCase()];
-        if (!link || !link.href) {
+        if (!link?.href) {
           out += cap[0].charAt(0);
           src = cap[0].substring(1) + src;
           continue;
@@ -678,7 +679,7 @@
       }
 
       if (src) {
-        throw new Error("Infinite loop on byte: " + src.charCodeAt(0));
+        throw new Error(`Infinite loop on byte: ${src.charCodeAt(0)}`);
       }
     }
 
@@ -742,9 +743,9 @@
     for (; i < l; i++) {
       ch = text.charCodeAt(i);
       if (Math.random() > 0.5) {
-        ch = "x" + ch.toString(16);
+        ch = `x${ch.toString(16)}`;
       }
-      out += "&#" + ch + ";";
+      out += `&#${ch};`;
     }
 
     return out;
@@ -786,7 +787,7 @@
   };
 
   Renderer.prototype.blockquote = (quote) =>
-    "<blockquote>\n" + quote + "</blockquote>\n";
+    `<blockquote>\n${quote}</blockquote>\n`;
 
   Renderer.prototype.html = (html) => html;
 
@@ -811,12 +812,12 @@
 
   Renderer.prototype.list = (body, ordered) => {
     var type = ordered ? "ol" : "ul";
-    return "<" + type + ">\n" + body + "</" + type + ">\n";
+    return `<${type}>\n${body}</${type}>\n`;
   };
 
-  Renderer.prototype.listitem = (text) => "<li>" + text + "</li>\n";
+  Renderer.prototype.listitem = (text) => `<li>${text}</li>\n`;
 
-  Renderer.prototype.paragraph = (text) => "<p>" + text + "</p>\n";
+  Renderer.prototype.paragraph = (text) => `<p>${text}</p>\n`;
 
   Renderer.prototype.table = (header, body) =>
     "<table>\n" +
@@ -828,28 +829,28 @@
     "</tbody>\n" +
     "</table>\n";
 
-  Renderer.prototype.tablerow = (content) => "<tr>\n" + content + "</tr>\n";
+  Renderer.prototype.tablerow = (content) => `<tr>\n${content}</tr>\n`;
 
   Renderer.prototype.tablecell = (content, flags) => {
     var type = flags.header ? "th" : "td";
     var tag = flags.align
-      ? "<" + type + ' style="text-align:' + flags.align + '">'
-      : "<" + type + ">";
-    return tag + content + "</" + type + ">\n";
+      ? `<${type} style="text-align:${flags.align}">`
+      : `<${type}>`;
+    return `${tag + content}</${type}>\n`;
   };
 
   // span level renderer
-  Renderer.prototype.strong = (text) => "<strong>" + text + "</strong>";
+  Renderer.prototype.strong = (text) => `<strong>${text}</strong>`;
 
-  Renderer.prototype.em = (text) => "<em>" + text + "</em>";
+  Renderer.prototype.em = (text) => `<em>${text}</em>`;
 
-  Renderer.prototype.codespan = (text) => "<code>" + text + "</code>";
+  Renderer.prototype.codespan = (text) => `<code>${text}</code>`;
 
   Renderer.prototype.br = function () {
     return this.options.xhtml ? "<br/>" : "<br>";
   };
 
-  Renderer.prototype.del = (text) => "<del>" + text + "</del>";
+  Renderer.prototype.del = (text) => `<del>${text}</del>`;
 
   Renderer.prototype.link = function (href, title, text) {
     if (this.options.sanitize) {
@@ -857,25 +858,25 @@
         var prot = decodeURIComponent(unescape(href))
           .replace(/[^\w:]/g, "")
           .toLowerCase();
-      } catch (e) {
+      } catch (_e) {
         return "";
       }
       if (prot.indexOf("javascript:") === 0) {
         return "";
       }
     }
-    var out = '<a href="' + href + '"';
+    var out = `<a href="${href}"`;
     if (title) {
-      out += ' title="' + title + '"';
+      out += ` title="${title}"`;
     }
-    out += ">" + text + "</a>";
+    out += `>${text}</a>`;
     return out;
   };
 
   Renderer.prototype.image = function (href, title, text) {
-    var out = '<img src="' + href + '" alt="' + text + '"';
+    var out = `<img src="${href}" alt="${text}"`;
     if (title) {
-      out += ' title="' + title + '"';
+      out += ` title="${title}"`;
     }
     out += this.options.xhtml ? "/>" : ">";
     return out;
@@ -943,7 +944,7 @@
     var body = this.token.text;
 
     while (this.peek().type === "text") {
-      body += "\n" + this.next().text;
+      body += `\n${this.next().text}`;
     }
 
     return this.inline.output(body);
@@ -981,13 +982,13 @@
           i,
           row,
           cell,
-          flags,
+          _flags,
           j;
 
         // header
         cell = "";
         for (i = 0; i < this.token.header.length; i++) {
-          flags = { header: true, align: this.token.align[i] };
+          _flags = { header: true, align: this.token.align[i] };
           cell += this.renderer.tablecell(
             this.inline.output(this.token.header[i]),
             { header: true, align: this.token.align[i] },
@@ -1104,13 +1105,13 @@
   function noop() {}
   noop.exec = noop;
 
-  function merge(obj) {
-    var i = 1,
+  function merge(obj, ...sources) {
+    var i = 0,
       target,
       key;
 
-    for (; i < arguments.length; i++) {
-      target = arguments[i];
+    for (; i < sources.length; i++) {
+      target = sources[i];
       for (key in target) {
         if (Object.hasOwn(target, key)) {
           obj[key] = target[key];
@@ -1174,7 +1175,7 @@
           if (token.type !== "code") {
             return --pending || done();
           }
-          return highlight(token.text, token.lang, (err, code) => {
+          return highlight(token.text, token.lang, (_err, code) => {
             if (code == null || code === token.text) {
               return --pending || done();
             }
@@ -1195,7 +1196,7 @@
       if ((opt || marked.defaults).silent) {
         return (
           "<p>An error occured:</p><pre>" +
-          escape(e.message + "", true) +
+          escape(`${e.message}`, true) +
           "</pre>"
         );
       }

@@ -21,7 +21,7 @@ let cssEdit,
   forgotToRenderCheckEnabled,
   headerAnchorsEnabled,
   gfmLineBreaksEnabled;
-let loaded = false;
+let _loaded = false;
 
 function onLoad() {
   localize();
@@ -62,18 +62,18 @@ function onLoad() {
     if (!shortcut) {
       // No shortcut set, or a conflict (that we lose)
       document.querySelector(".hotkey-current-error").style.display = "";
-      document
-        .querySelectorAll(".hotkey-error-hide")
-        .forEach((el) => (el.style.display = "none"));
+      document.querySelectorAll(".hotkey-error-hide").forEach((el) => {
+        el.style.display = "none";
+      });
     } else {
-      document
-        .querySelectorAll(".hotkey-current")
-        .forEach((el) => (el.textContent = shortcut));
+      document.querySelectorAll(".hotkey-current").forEach((el) => {
+        el.textContent = shortcut;
+      });
     }
   });
 
   // Listen for runtime messages from the background script
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  chrome.runtime.onMessage.addListener((request, _sender, _sendResponse) => {
     if (request.action === "button-click") {
       // Handle button click from background script by toggling markdown
       markdownToggle();
@@ -146,14 +146,14 @@ function onLoad() {
     }
   }, 500);
 
-  loaded = true;
+  _loaded = true;
 }
 document.addEventListener("DOMContentLoaded", onLoad, false);
 
 function localize() {
   const elements = document.querySelectorAll("[data-i18n]");
   elements.forEach((element) => {
-    const messageID = "options_page__" + element.dataset.i18n;
+    const messageID = `options_page__${element.dataset.i18n}`;
     if (element.tagName.toUpperCase() === "TITLE") {
       element.innerText = Utils.getMessage(messageID);
     } else {
@@ -216,7 +216,7 @@ function checkChange() {
     // We want the user to see the effects of their change quite quickly, but
     // we don't want to spam our saves (because there are quota limits). But we
     // have to save before we can re-render (the rendering using the saved values).
-    if (lastChangeTime && new Date() - lastChangeTime > 400) {
+    if (lastChangeTime && Date.now() - lastChangeTime > 400) {
       // Sufficient time has passed since the last change -- time to save.
       lastChangeTime = null;
 
@@ -288,8 +288,8 @@ function renderMarkdown(postRenderCallback) {
   // by the rendering service.
 
   function requestMarkdownConversionInterceptor(elem, range, callback) {
-    function callbackInterceptor() {
-      callback.apply(null, arguments);
+    function callbackInterceptor(...args) {
+      callback.apply(null, args);
 
       // Rendering done. Call callback.
       if (postRenderCallback) postRenderCallback();
@@ -333,8 +333,8 @@ document
 function resetCssEdit() {
   // Get the default value.
   Utils.getLocalFile(
-    OptionsStore.defaults["main-css"]["__defaultFromFile__"],
-    OptionsStore.defaults["main-css"]["__dataType__"],
+    OptionsStore.defaults["main-css"].__defaultFromFile__,
+    OptionsStore.defaults["main-css"].__dataType__,
     (defaultValue) => {
       cssEdit.value = defaultValue;
     },
@@ -360,7 +360,7 @@ function cssSyntaxSelectChange() {
 
   // Get the CSS for the selected theme.
   Utils.getLocalFile(
-    Utils.getLocalURL("/common/highlightjs/styles/" + selected),
+    Utils.getLocalURL(`/common/highlightjs/styles/${selected}`),
     "text",
     (css) => {
       cssSyntaxEdit.value = css;
@@ -394,7 +394,7 @@ function loadChangelist() {
         let prevVerStart = null;
 
         for (const h2 of allH2s) {
-          if (h2.textContent.match(new RegExp("v" + version + "$"))) {
+          if (h2.textContent.match(new RegExp(`v${version}$`))) {
             prevVerStart = h2;
             break;
           }
@@ -459,7 +459,7 @@ function showDonatePlea() {
     '#donate-button input[name="item_number"]',
   );
   if (itemNumberInput) {
-    itemNumberInput.value = "options-page-" + pleaId;
+    itemNumberInput.value = `options-page-${pleaId}`;
   }
 }
 

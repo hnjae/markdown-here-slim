@@ -39,9 +39,9 @@
     markedRenderer.heading = function (text, level, raw) {
       if (userprefs["header-anchors-enabled"]) {
         // Add an anchor right above the heading. See MDH issue #93.
-        var sanitizedText = sanitizeLinkForAnchor(text);
-        var anchorLink = '<a href="#" name="' + sanitizedText + '"></a>';
-        return "<h" + level + ">" + anchorLink + text + "</h" + level + ">\n";
+        const sanitizedText = sanitizeLinkForAnchor(text);
+        const anchorLink = `<a href="#" name="${sanitizedText}"></a>`;
+        return `<h${level}>${anchorLink}${text}</h${level}>\n`;
       } else {
         return defaultHeadingRenderer.call(this, text, level, raw);
       }
@@ -57,7 +57,7 @@
       if (userprefs["header-anchors-enabled"]) {
         // Add an anchor right above the heading. See MDH issue #93.
         if (href.indexOf("#") === 0) {
-          href = "#" + sanitizeLinkForAnchor(href.slice(1).toLowerCase());
+          href = `#${sanitizeLinkForAnchor(href.slice(1).toLowerCase())}`;
         }
       }
 

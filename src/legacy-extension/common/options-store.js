@@ -48,22 +48,22 @@
         // Process the object, recombining divided entries.
         var tempobj = {},
           finalobj = {};
-        for (var key in sync) {
-          var val = sync[key];
-          var divIndex = key.indexOf(this._div);
+        for (const key in sync) {
+          const val = sync[key];
+          const divIndex = key.indexOf(this._div);
 
           if (divIndex < 0) {
             finalobj[key] = val;
           } else {
-            var keybase = key.slice(0, divIndex);
-            var keynum = key.slice(divIndex + this._div.length);
+            const keybase = key.slice(0, divIndex);
+            const keynum = key.slice(divIndex + this._div.length);
             tempobj[keybase] = tempobj[keybase] || [];
             tempobj[keybase][keynum] = val;
           }
         }
 
         // Recombine the divided entries.
-        for (key in tempobj) {
+        for (const key in tempobj) {
           finalobj[key] = tempobj[key].join("");
         }
 
@@ -78,14 +78,14 @@
       this._clearExisting(obj, () => {
         // Split long string entries into pieces, so we don't exceed the limit.
         var finalobj = {};
-        for (var key in obj) {
-          var val = obj[key];
+        for (const key in obj) {
+          const val = obj[key];
           if (typeof val !== "string" || val.length < this._maxlen()) {
             // Don't need to split, or can't.
             finalobj[key] = val;
           } else {
-            var pieces = Math.ceil(val.length / this._maxlen());
-            for (var i = 0; i < pieces; i++) {
+            const pieces = Math.ceil(val.length / this._maxlen());
+            for (let i = 0; i < pieces; i++) {
               finalobj[key + this._div + i] = val.substr(
                 i * this._maxlen(),
                 this._maxlen(),
@@ -134,11 +134,7 @@
       // Note that chrome.storage.sync.QUOTA_BYTES_PER_ITEM is in bytes, but JavaScript
       // strings are UTF-16, so we need to divide by 2.
       // Some JS string info: https://rosettacode.org/wiki/String_length#JavaScript
-      if (
-        chrome.storage &&
-        chrome.storage.sync &&
-        chrome.storage.sync.QUOTA_BYTES_PER_ITEM
-      ) {
+      if (chrome.storage?.sync?.QUOTA_BYTES_PER_ITEM) {
         return chrome.storage.sync.QUOTA_BYTES_PER_ITEM / 2;
       } else {
         // 8192 is the default value for chrome.storage.sync.QUOTA_BYTES_PER_ITEM, so...
@@ -154,7 +150,7 @@
             // Older settings aren't JSON-encoded, so they'll throw an exception.
             try {
               obj[key] = JSON.parse(obj[key]);
-            } catch (ex) {
+            } catch (_ex) {
               // do nothing, leave the value as-is
             }
           }
@@ -172,7 +168,7 @@
               obj[localStorage.key(i)] = JSON.parse(
                 localStorage.getItem(localStorage.key(i)),
               );
-            } catch (ex) {
+            } catch (_ex) {
               obj[localStorage.key(i)] = localStorage.getItem(
                 localStorage.key(i),
               );
@@ -310,8 +306,8 @@
       if (typeof prefsObj[key] === "undefined") {
         if (Object.hasOwn(that.defaults[key], "__defaultFromFile__")) {
           Utils.getLocalFile(
-            that.defaults[key]["__defaultFromFile__"],
-            that.defaults[key]["__dataType__"] || "text",
+            that.defaults[key].__defaultFromFile__,
+            that.defaults[key].__dataType__ || "text",
             (data) => {
               prefsObj[key] = data;
               callback();

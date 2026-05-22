@@ -128,7 +128,7 @@
     nodeRange = node.ownerDocument.createRange();
     try {
       nodeRange.selectNode(node);
-    } catch (e) {
+    } catch (_e) {
       nodeRange.selectNodeContents(node);
     }
 
@@ -149,8 +149,8 @@
   }
 
   // Returns array of elements in selection.
-  function getSelectedElementsInDocument(doc) {
-    var range, sel, containerElement;
+  function _getSelectedElementsInDocument(doc) {
+    var range, sel, _containerElement;
     sel = doc.getSelection();
     if (sel.rangeCount > 0) {
       range = sel.getRangeAt(0);
@@ -171,7 +171,7 @@
 
     if (range) {
       containerElement = range.commonAncestorContainer;
-      if (containerElement.nodeType != 1) {
+      if (containerElement.nodeType !== 1) {
         containerElement = containerElement.parentNode;
       }
 
@@ -209,10 +209,12 @@
 
   function isElementInDocument(element) {
     var doc = element.ownerDocument;
-    while ((element = element.parentNode)) {
-      if (element === doc) {
+    var parent = element.parentNode;
+    while (parent) {
+      if (parent === doc) {
         return true;
       }
+      parent = parent.parentNode;
     }
     return false;
   }
@@ -250,7 +252,7 @@
     var html = "",
       i;
     for (i = 0; i < docFrag.childNodes.length; i++) {
-      var node = docFrag.childNodes[i];
+      const node = docFrag.childNodes[i];
       if (node.nodeType === node.TEXT_NODE) {
         html += node.nodeValue.replace(/[&<>]/g, replaceChar);
       } else {
@@ -263,11 +265,12 @@
   }
 
   function isElementDescendant(parent, descendant) {
-    var ancestor = descendant;
-    while ((ancestor = ancestor.parentNode)) {
+    var ancestor = descendant.parentNode;
+    while (ancestor) {
       if (ancestor === parent) {
         return true;
       }
+      ancestor = ancestor.parentNode;
     }
 
     return false;
@@ -278,7 +281,7 @@
   // no "./blah" or "../blah"). So `url` must start with `/`.
   function getLocalURL(url) {
     if (url[0] !== "/") {
-      throw "relative url not allowed: " + url;
+      throw `relative url not allowed: ${url}`;
     }
 
     if (url.indexOf("://") >= 0) {
@@ -364,7 +367,7 @@
 
   var PRIVILEGED_REQUEST_EVENT_NAME = "markdown-here-request-event";
 
-  function makeRequestToPrivilegedScript(doc, requestObj, callback) {
+  function makeRequestToPrivilegedScript(_doc, requestObj, callback) {
     // If `callback` is undefined and we pass it anyway, Chrome complains with this:
     // Uncaught Error: Invocation of form extension.sendMessage(object, undefined, null) doesn't match definition extension.sendMessage(optional string extensionId, any message, optional function responseCallback)
     if (callback) {
@@ -446,11 +449,10 @@
   function nextTickFn(callback, context) {
     var start = new Date();
 
-    return function nextTickFnInner() {
-      var args = arguments;
+    return function nextTickFnInner(...args) {
       var runner = () => {
         // Detect a whether the async callback was super slow
-        var end = new Date() - start;
+        var end = Date.now() - start;
         if (end > 200) {
           // setTimeout is too slow -- switch to the XHR approach.
           asyncCallback = asyncCallbackXHR;
@@ -484,7 +486,7 @@
     var message = chrome.i18n.getMessage(messageID);
 
     if (!message) {
-      throw new Error("Could not find message ID: " + messageID);
+      throw new Error(`Could not find message ID: ${messageID}`);
     }
 
     return message;
@@ -523,11 +525,12 @@
         : (nInLen * 3 + 1) >> 2,
       taBytes = new Uint8Array(nOutLen);
 
-    for (
-      var nMod3, nMod4, nUint24 = 0, nOutIdx = 0, nInIdx = 0;
-      nInIdx < nInLen;
-      nInIdx++
-    ) {
+    var nMod3,
+      nMod4,
+      nUint24 = 0,
+      nOutIdx = 0,
+      nInIdx = 0;
+    for (; nInIdx < nInLen; nInIdx++) {
       nMod4 = nInIdx & 3;
       nUint24 |= b64ToUint6(sB64Enc.charCodeAt(nInIdx)) << (18 - 6 * nMod4);
       if (nMod4 === 3 || nInLen - nInIdx === 1) {
@@ -561,7 +564,10 @@
     var nMod3 = 2,
       sB64Enc = "";
 
-    for (var nLen = aBytes.length, nUint24 = 0, nIdx = 0; nIdx < nLen; nIdx++) {
+    var nLen = aBytes.length,
+      nUint24 = 0,
+      nIdx = 0;
+    for (; nIdx < nLen; nIdx++) {
       nMod3 = nIdx % 3;
       if (nIdx > 0 && ((nIdx * 4) / 3) % 76 === 0) {
         sB64Enc += "\r\n";
@@ -589,7 +595,10 @@
   function utf8ArrToStr(aBytes) {
     var sView = "";
 
-    for (var nPart, nLen = aBytes.length, nIdx = 0; nIdx < nLen; nIdx++) {
+    var nPart,
+      nLen = aBytes.length,
+      nIdx = 0;
+    for (; nIdx < nLen; nIdx++) {
       nPart = aBytes[nIdx];
       sView += String.fromCharCode(
         nPart > 251 && nPart < 254 && nIdx + 5 < nLen
@@ -642,7 +651,8 @@
 
     /* mapping... */
 
-    for (var nMapIdx = 0; nMapIdx < nStrLen; nMapIdx++) {
+    var nMapIdx = 0;
+    for (; nMapIdx < nStrLen; nMapIdx++) {
       nChr = sDOMStr.charCodeAt(nMapIdx);
       nArrLen +=
         nChr < 0x80
@@ -662,7 +672,9 @@
 
     /* transcription... */
 
-    for (var nIdx = 0, nChrIdx = 0; nIdx < nArrLen; nChrIdx++) {
+    var nIdx = 0,
+      nChrIdx = 0;
+    for (; nIdx < nArrLen; nChrIdx++) {
       nChr = sDOMStr.charCodeAt(nChrIdx);
       if (nChr < 128) {
         /* one byte */

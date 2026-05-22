@@ -72,7 +72,7 @@ function isExcludedExtensionFile(
 
 function extensionCopyPlugin(): PluginOption {
   const virtualModuleId = "virtual:extension-build";
-  const resolvedVirtualModuleId = "\0" + virtualModuleId;
+  const resolvedVirtualModuleId = `\0${virtualModuleId}`;
 
   return {
     name: "extension-copy",

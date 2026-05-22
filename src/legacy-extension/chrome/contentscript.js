@@ -16,7 +16,7 @@
  */
 
 // Handle the menu-item click
-function requestHandler(request, sender, sendResponse) {
+function requestHandler(request, _sender, _sendResponse) {
   if (request && request.action === "button-click") {
     // Check if the focused element is a valid render target
     const focusedElem = markdownHere.findFocusedElem(window.document);
@@ -30,8 +30,8 @@ function requestHandler(request, sender, sendResponse) {
       return false;
     }
 
-    const logger = function () {
-      console.log.apply(console, arguments);
+    const logger = (...args) => {
+      console.log.apply(console, args);
     };
 
     const mdReturn = markdownHere(
@@ -67,7 +67,7 @@ function requestMarkdownConversion(elem, range, callback) {
 }
 
 // When rendering (or unrendering) completed
-function markdownRenderComplete(elem, rendered) {
+function markdownRenderComplete(_elem, _rendered) {
   // No-op for now
 }
 
@@ -89,10 +89,7 @@ Utils.makeRequestToPrivilegedScript(
 
 // Check periodically if we should set up forgot-to-render hooks
 function forgotToRenderCheck() {
-  if (
-    !forgotToRenderIntervalCheckPrefs ||
-    !forgotToRenderIntervalCheckPrefs["forgot-to-render-check-enabled-2"]
-  ) {
+  if (!forgotToRenderIntervalCheckPrefs?.["forgot-to-render-check-enabled-2"]) {
     return;
   }
 

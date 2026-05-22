@@ -226,9 +226,7 @@ we have the DOM available? String-processing the HTML seems suboptimal.
       closeTagLength,
       regexFiller;
 
-    regexFiller = ifNotHasString
-      ? "(((?!" + ifNotHasString + ")[^>])*)"
-      : "[^>]*";
+    regexFiller = ifNotHasString ? `(((?!${ifNotHasString})[^>])*)` : "[^>]*";
     if (ifHasAttribute) {
       openTagRegex = new RegExp(
         "<" +
@@ -243,10 +241,10 @@ we have the DOM available? String-processing the HTML seems suboptimal.
         "i",
       );
     } else {
-      openTagRegex = new RegExp("<" + tagName + "\\b" + regexFiller + ">", "i");
+      openTagRegex = new RegExp(`<${tagName}\\b${regexFiller}>`, "i");
     }
 
-    closeTagRegex = new RegExp("</" + tagName + "\\b", "i");
+    closeTagRegex = new RegExp(`</${tagName}\\b`, "i");
 
     depth = 0;
     startIndex = 0;
@@ -287,9 +285,9 @@ we have the DOM available? String-processing the HTML seems suboptimal.
             // put around them so that they don't get mashed together with the
             // preceding and following Markdown.
 
-            closeTagLength = ("</" + tagName + ">").length;
+            closeTagLength = `</${tagName}>`.length;
 
-            var placeholder = String(Math.random());
+            const placeholder = String(Math.random());
             this.preprocessInfo.exclusions.push({
               placeholder: placeholder,
               content:
@@ -336,10 +334,10 @@ we have the DOM available? String-processing the HTML seems suboptimal.
   /**
 Converts instances of `tag` in `html` to Markdown and returns the
 resulting HTML.
-*/
+	*/
   function convertHTMLtoMarkdown(tag, html) {
     if (tag === "a") {
-      var htmlToRestore = [];
+      const htmlToRestore = [];
       html = html.replace(/(`+)[\s\S]+?\1/gi, ($0) => {
         var replacement = Math.random();
         htmlToRestore.push([replacement, $0]);
@@ -365,10 +363,10 @@ resulting HTML.
     */
       html = html.replace(
         /((?:\]\([^)]*)|(?:\[[^\]]*)|(?:\[.*\]:.*))?<a\s[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gi,
-        ($0, $1, $2, $3) => ($1 ? $0 : "[" + $3 + "](" + $2 + ")"),
+        ($0, $1, $2, $3) => ($1 ? $0 : `[${$3}](${$2})`),
       );
 
-      for (var i = 0; i < htmlToRestore.length; i++) {
+      for (let i = 0; i < htmlToRestore.length; i++) {
         html = html.replace(htmlToRestore[i][0], () => {
           // The replacement argument to `String.replace()` has some magic values: https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/replace#Specifying_a_string_as_a_parameter
           // Because we don't control the content of that argument, we either
@@ -377,9 +375,7 @@ resulting HTML.
         });
       }
     } else {
-      throw new Error(
-        "convertHTMLtoMarkdown: " + tag + " is not a supported tag",
-      );
+      throw new Error(`convertHTMLtoMarkdown: ${tag} is not a supported tag`);
     }
 
     return html;

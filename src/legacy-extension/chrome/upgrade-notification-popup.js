@@ -35,8 +35,7 @@ function onLoad() {
       .addEventListener("click", (e) => {
         e.preventDefault();
         const optionsUrl = Utils.getLocalURL("/common/options.html");
-        const urlWithParam =
-          optionsUrl + "?prevVer=" + encodeURIComponent(prevVersion);
+        const urlWithParam = `${optionsUrl}?prevVer=${encodeURIComponent(prevVersion)}`;
 
         // Open options page in new tab
         chrome.tabs.create({ url: urlWithParam }, () => {

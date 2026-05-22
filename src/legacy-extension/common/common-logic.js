@@ -15,14 +15,14 @@
   /*global module:false, chrome:false, Utils:false*/
 
   var DEBUG = false;
-  function debugLog() {
+  function debugLog(...args) {
     var i,
       log = "";
     if (!DEBUG) {
       return;
     }
-    for (i = 0; i < arguments.length; i++) {
-      log += String(arguments[i]) + " // ";
+    for (i = 0; i < args.length; i++) {
+      log += `${String(args[i])} // `;
     }
     Utils.consoleLog(log);
   }
@@ -365,7 +365,7 @@ clicked.
   }
 
   // Returns true if `text` looks like raw Markdown, false otherwise.
-  function probablyWritingMarkdown(mdMaybe, marked, prefs) {
+  function probablyWritingMarkdown(mdMaybe, _marked, _prefs) {
     /*
   This is going to be tricksy and fraught with danger. Challenges:
     * If it's not sensitive enough, it's useless.
@@ -401,7 +401,7 @@ clicked.
         "Markdown Here detected unrendered " +
         type +
         (typeof match.index !== "undefined"
-          ? ': "' + mdMaybe.slice(match.index, match.index + 10) + '"'
+          ? `: "${mdMaybe.slice(match.index, match.index + 10)}"`
           : "");
 
       if (log !== probablyWritingMarkdown.lastLog) {
@@ -495,7 +495,7 @@ clicked.
   // should be halted.
   function showHTMLForgotToRenderPrompt(
     html,
-    composeElem,
+    _composeElem,
     composeSendButton,
     callback,
   ) {

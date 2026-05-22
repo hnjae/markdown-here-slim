@@ -151,7 +151,7 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
     responseCallback("test-request-good");
     return false;
   } else {
-    throw "unmatched request action: " + request.action;
+    throw `unmatched request action: ${request.action}`;
   }
 });
 
@@ -171,7 +171,7 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
       if (await ContentPermissions.hasPermission(tab.url)) {
         await Injector.injectScripts(tabId);
       }
-    } catch (e) {
+    } catch (_e) {
       // Invalid URL or other error -- just skip
     }
   }
@@ -182,7 +182,7 @@ async function handleActionClick(tab, info = undefined) {
   // Check if the current tab is the options page
   const optionsPageUrl = Utils.getLocalURL("/common/options.html");
 
-  if (tab.url && tab.url.startsWith(optionsPageUrl)) {
+  if (tab.url?.startsWith(optionsPageUrl)) {
     // For the options page, send a runtime message directly without injection
     // (because injection won't work on the options page).
     chrome.tabs.sendMessage(tab.id, {
@@ -235,8 +235,8 @@ const Injector = {
           return !!alreadyInjected;
         },
       });
-      return results && results[0] && results[0].result === true;
-    } catch (e) {
+      return results?.[0] && results[0].result === true;
+    } catch (_e) {
       // Tab might not be accessible
       return false;
     }

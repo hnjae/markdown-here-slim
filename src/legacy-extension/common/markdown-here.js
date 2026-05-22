@@ -40,7 +40,7 @@ https://github.com/adam-p/markdown-here/issues/85
   var WRAPPER_TITLE_PREFIX = "MDH:";
 
   // For debugging purposes. An external service is required to log with Firefox.
-  var mylog = () => {};
+  var _mylog = () => {};
 
   // Finds and returns the page element that currently has focus. Drills down into
   // iframes if necessary.
@@ -58,8 +58,8 @@ https://github.com/adam-p/markdown-here/issues/85
       // Rather than spam the console with exceptions, we'll treat this as an
       // unrenderable situation (which it is).
       try {
-        var _ = focusedElem.contentDocument;
-      } catch (e) {
+        focusedElem.contentDocument;
+      } catch (_e) {
         // TODO: Check that this is actually a SecurityError and re-throw if it's not?
         return false;
       }
@@ -73,7 +73,7 @@ https://github.com/adam-p/markdown-here/issues/85
 
     // If the focus is within an iframe, we'll have to drill down to get to the
     // actual element.
-    while (focusedElem && focusedElem.contentDocument) {
+    while (focusedElem?.contentDocument) {
       focusedElem = focusedElem.contentDocument.activeElement;
 
       if (!iframeAccessOkay(focusedElem)) {
@@ -364,10 +364,10 @@ https://github.com/adam-p/markdown-here/issues/85
     // This scenario is issue #297 https://github.com/adam-p/markdown-here/issues/297
 
     var rawHolders = elem.querySelectorAll(
-      '[title^="' + WRAPPER_TITLE_PREFIX + '"]',
+      `[title^="${WRAPPER_TITLE_PREFIX}"]`,
     );
 
-    for (var i = 0; i < rawHolders.length; i++) {
+    for (let i = 0; i < rawHolders.length; i++) {
       if (
         // The above `querySelector` will also look at grandchildren of
         // `elem`, which we don't want.
@@ -424,7 +424,7 @@ https://github.com/adam-p/markdown-here/issues/85
   function findMarkdownHereWrappersInRange(range) {
     // Adapted from: https://stackoverflow.com/a/1483487/729729
     var containerElement = range.commonAncestorContainer;
-    if (containerElement.nodeType != containerElement.ELEMENT_NODE) {
+    if (containerElement.nodeType !== containerElement.ELEMENT_NODE) {
       containerElement = containerElement.parentNode;
     }
 
@@ -528,7 +528,7 @@ https://github.com/adam-p/markdown-here/issues/85
             wrapper.ownerDocument.defaultView.MutationObserver ||
             wrapper.ownerDocument.defaultView.WebKitMutationObserver;
           if (typeof SupportedMutationObserver !== "undefined") {
-            var observer = new SupportedMutationObserver((mutations) => {
+            const observer = new SupportedMutationObserver((_mutations) => {
               wrapper.setAttribute(
                 "markdown-here-wrapper-content-modified",
                 true,
@@ -587,7 +587,7 @@ https://github.com/adam-p/markdown-here/issues/85
   //          to the user.
   function markdownHere(document, markdownRenderer, logger, renderComplete) {
     if (logger) {
-      mylog = logger;
+      _mylog = logger;
     }
 
     // If the cursor (or current selection) is in a Markdown Here wrapper, then
@@ -600,7 +600,7 @@ https://github.com/adam-p/markdown-here/issues/85
     var wrappers, outerWrapper, focusedElem, range, i;
 
     focusedElem = findFocusedElem(document);
-    if (!focusedElem || !focusedElem.ownerDocument) {
+    if (!focusedElem?.ownerDocument) {
       return "Could not find focused element";
     }
 
@@ -625,7 +625,7 @@ https://github.com/adam-p/markdown-here/issues/85
     // If we've found wrappers, then we're reverting.
     // Otherwise, we're rendering.
     if (wrappers && wrappers.length > 0) {
-      var yesToAll = false;
+      let yesToAll = false;
       for (i = 0; i < wrappers.length; i++) {
         // Has the content been modified by the user since rendering
         if (

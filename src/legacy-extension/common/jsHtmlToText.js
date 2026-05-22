@@ -25,8 +25,7 @@ adam-p: modified to be a module
     var text = html,
       i;
 
-    if (extensions && extensions["preprocessing"])
-      text = extensions["preprocessing"](text);
+    if (extensions?.preprocessing) text = extensions.preprocessing(text);
 
     text = text
       // Remove line breaks
@@ -45,8 +44,7 @@ adam-p: modified to be a module
     those that should be replaced with two newlines and those that should be
     replaced with one newline. */
 
-    if (extensions && extensions["tagreplacement"])
-      text = extensions["tagreplacement"](text);
+    if (extensions?.tagreplacement) text = extensions.tagreplacement(text);
 
     var doubleNewlineTags = [
       "p",
@@ -83,12 +81,12 @@ adam-p: modified to be a module
     ];
 
     for (i = 0; i < doubleNewlineTags.length; i++) {
-      var r = RegExp("</?\\s*" + doubleNewlineTags[i] + "[^>]*>", "ig");
+      const r = RegExp(`</?\\s*${doubleNewlineTags[i]}[^>]*>`, "ig");
       text = text.replace(r, "\n\n");
     }
 
     for (i = 0; i < singleNewlineTags.length; i++) {
-      var r = RegExp("<\\s*" + singleNewlineTags[i] + "[^>]*>", "ig");
+      const r = RegExp(`<\\s*${singleNewlineTags[i]}[^>]*>`, "ig");
       text = text.replace(r, "\n");
     }
 
@@ -110,20 +108,19 @@ adam-p: modified to be a module
 
     /* adam-p: make trailing whitespace stripping optional */
 
-    if (!extensions || !extensions["allowTrailingWhitespace"]) {
+    if (!extensions?.allowTrailingWhitespace) {
       text = text
         // Trim rightmost whitespaces for all lines
         .replace(/([^\n\S]+)\n/g, "\n")
         .replace(/([^\n\S]+)$/, "");
     }
 
-    if (extensions && extensions["postprocessing"])
-      text = extensions["postprocessing"](text);
+    if (extensions?.postprocessing) text = extensions.postprocessing(text);
 
     return text;
   }
 
-  function decodeHtmlEntity(m, n) {
+  function decodeHtmlEntity(_m, n) {
     // Determine the character code of the entity. Range is 0 to 65535
     // (characters in JavaScript are Unicode, and entities can represent
     // Unicode characters).
@@ -132,9 +129,9 @@ adam-p: modified to be a module
     // Try to parse as numeric entity. This is done before named entities for
     // speed because associative array lookup in many JavaScript implementations
     // is a linear search.
-    if (n.substr(0, 1) == "#") {
+    if (n.substr(0, 1) === "#") {
       // Try to parse as numeric entity
-      if (n.substr(1, 1) == "x") {
+      if (n.substr(1, 1) === "x") {
         // Try to parse as hexadecimal
         code = parseInt(n.substr(2), 16);
       } else {
@@ -147,8 +144,8 @@ adam-p: modified to be a module
     }
 
     // If still nothing, pass entity through
-    return code === undefined || code === NaN
-      ? "&" + n + ";"
+    return code === undefined || Number.isNaN(code)
+      ? `&${n};`
       : String.fromCharCode(code);
   }
 

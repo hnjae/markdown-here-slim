@@ -8,10 +8,6 @@
  *   must be inlined on all elements -- stylesheets get stripped.)
  */
 
-/* This is the overall wrapper, it should be treated as the `body` section. */
-.markdown-here-wrapper {
-}
-
 /* To add site specific rules, you can use the `data-md-url` attribute that we
    add to the wrapper element. Note that rules like this are used depending
    on the URL you're *sending* from, not the URL where the recipient views it.
@@ -190,8 +186,8 @@ table {
   padding: 0;
   border-collapse: collapse;
   border-spacing: 0;
-  font-size: 1em;
   font: inherit;
+  font-size: 1em;
   border: 0;
 }
 
