@@ -1,13 +1,7 @@
 version = 1
 
 [[annotations]]
-path = [
-  "**",
-  ".eslintrc.json",
-  ".gitattributes",
-  ".github/**",
-  ".gitignore",
-]
+path = ["**", ".eslintrc.json", ".gitattributes", ".github/**", ".gitignore"]
 precedence = "closest"
 SPDX-FileCopyrightText = [
   "2013-2016 Adam Pritchard",
@@ -17,20 +11,13 @@ SPDX-FileCopyrightText = [
 SPDX-License-Identifier = "MIT AND AGPL-3.0-or-later"
 
 [[annotations]]
-path = [
-  "src/common/images/*.png",
-  "src/common/images/*.svg",
-]
+path = ["src/common/images/*.png", "src/common/images/*.svg"]
 precedence = "closest"
 SPDX-FileCopyrightText = "2015 Austin Anderson"
 SPDX-License-Identifier = "LicenseRef-Markdown-Here-CLA"
 
 [[annotations]]
-path = [
-  "store-assets/*.jpg",
-  "store-assets/*.png",
-  "store-assets/*.xcf",
-]
+path = ["store-assets/*.jpg", "store-assets/*.png", "store-assets/*.xcf"]
 precedence = "closest"
 SPDX-FileCopyrightText = "2015 Adam Pritchard"
 SPDX-License-Identifier = "CC-BY-3.0"
@@ -112,8 +99,19 @@ path = [
   "src/common/highlightjs/styles/nnfx-light.css",
 ]
 precedence = "closest"
-SPDX-FileCopyrightText = [
-  "Jan T. Sott",
-  "2020-2021 Jim Mason",
-]
+SPDX-FileCopyrightText = ["Jan T. Sott", "2020-2021 Jim Mason"]
 SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = [
+  ".editorconfig",
+  ".rumdl.toml",
+  ".typos.toml",
+  ".yamlfmt.yaml",
+  "devenv.lock",
+  "devenv.nix",
+  "devenv.yaml",
+]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 KIM Hyunjae"
+SPDX-License-Identifier = "AGPL-3.0-or-later"

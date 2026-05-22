@@ -1,0 +1,20 @@
+[global]
+flavor = "gfm"
+disable = [
+  "MD001", # heading-increment
+  "MD013", # line-length
+  "MD033", # no-inline-html
+  "MD036", # no-emphasis-as-heading
+  "MD041", # first-line-heading
+
+  # markdown-here compatibility:
+  "MD046", # code-block-style
+  "MD059", # descriptive-link-text
+]
+
+[MD007] # ul-indent
+indent = 4
+
+[MD060]
+enabled = true    # table-format
+style = "aligned"
