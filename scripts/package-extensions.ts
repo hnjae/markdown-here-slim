@@ -37,5 +37,5 @@ async function packageExtension(
 }
 
 await packageExtension("chrome");
-await packageExtension("firefox");
+await packageExtension("firefox", "xpi");
 await packageExtension("thunderbird", "xpi");
