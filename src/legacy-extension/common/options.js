@@ -382,52 +382,6 @@ function loadChangelist() {
       changes = marked(changes, markedOptions);
 
       Utils.saferSetInnerHTML(document.getElementById("changelist"), changes);
-
-      const prevVer = location.search
-        ? location.search.match(/prevVer=([0-9.]+)/)
-        : null;
-      if (prevVer) {
-        const version = prevVer[1]; // capture group
-
-        const changelist = document.getElementById("changelist");
-        const allH2s = changelist.querySelectorAll("h2");
-        let prevVerStart = null;
-
-        for (const h2 of allH2s) {
-          if (h2.textContent.match(new RegExp(`v${version}$`))) {
-            prevVerStart = h2;
-            break;
-          }
-        }
-
-        const firstH1 = changelist.querySelector("h1:first-child");
-        if (firstH1) {
-          // Create and insert the new h2
-          const newH2 = document.createElement("h2");
-          newH2.textContent = Utils.getMessage("new_changelist_items");
-          firstH1.insertAdjacentElement("afterend", newH2);
-
-          // Collect elements between newH2 and prevVerStart
-          const wrapper = document.createElement("div");
-          wrapper.className = "changelist-new";
-
-          let current = newH2.nextElementSibling;
-          while (current && current !== prevVerStart) {
-            const next = current.nextElementSibling;
-            wrapper.appendChild(current);
-            current = next;
-          }
-
-          newH2.insertAdjacentElement("afterend", wrapper);
-        }
-
-        // Move the changelist section up in the page
-        const changelistContainer = document.getElementById(
-          "changelist-container",
-        );
-        const pagehead = document.getElementById("pagehead");
-        pagehead.insertAdjacentElement("afterend", changelistContainer);
-      }
     },
   );
 }

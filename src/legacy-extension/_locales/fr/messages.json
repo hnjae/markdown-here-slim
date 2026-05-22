@@ -60,10 +60,6 @@
     "description": "In Thunderbird, in order to open the options tab we first have to open a temporary dialog box. This is the title for that box.",
     "inMozDTD": true
   },
-  "new_changelist_items": {
-    "message": "NOUVEAU",
-    "description": "Used to highlight the part of the changelist that is new. There will typically be multiple items in the list, so this should be considered plural."
-  },
   "nothing_to_render": {
     "message": "Il n'y a rien à rendre en Markdown ou à rétablir",
     "description": "Error message shown to user if there's nothing found to revert or render."
@@ -339,17 +335,5 @@
   "unrendering_modified_markdown_warning": {
     "message": "Le rendu Markdown semble avoir été modifié.\nBasculer fera perdre tous les changements.\n\nVoulez-vous vraiment basculer le rendu ?",
     "description": "Warning shown to the user if she tries to revert some rendered Markdown that they've modified since rendering. The user will lose their modifications if they proceed."
-  },
-  "upgrade_notification_changes_tooltip": {
-    "message": "Cliquez pour voir les modifications apportées à cette version",
-    "description": "Tooltip text on the link that opens the changes list"
-  },
-  "upgrade_notification_dismiss_tooltip": {
-    "message": "Ignorer cette notification",
-    "description": "Tooltip text on the link that dismisses the notification"
-  },
-  "upgrade_notification_text": {
-    "message": "Markdown Here mis à jour",
-    "description": "Text on the notification shown when Markdown Here has been updated"
   }
 }

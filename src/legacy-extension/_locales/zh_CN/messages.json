@@ -60,10 +60,6 @@
     "description": "In Thunderbird, in order to open the options tab we first have to open a temporary dialog box. This is the title for that box.",
     "inMozDTD": true
   },
-  "new_changelist_items": {
-    "message": "NEW",
-    "description": "Used to highlight the part of the changelist that is new. There will typically be multiple items in the list, so this should be considered plural."
-  },
   "nothing_to_render": {
     "message": "没有可转换或可恢复的内容",
     "description": "Error message shown to user if there's nothing found to revert or render."
@@ -336,17 +332,5 @@
   "unrendering_modified_markdown_warning": {
     "message": "已转换的Markdown内容好像有了新改动.\n如果你再次转换它，新改动的内容会丢失。\n\n你确定要转换吗?",
     "description": "Warning shown to the user if she tries to revert some rendered Markdown that they've modified since rendering. The user will lose their modifications if they proceed."
-  },
-  "upgrade_notification_changes_tooltip": {
-    "message": "单击查看这个版本的更新日志",
-    "description": "Tooltip text on the link that opens the changes list"
-  },
-  "upgrade_notification_dismiss_tooltip": {
-    "message": "忽略这条通知",
-    "description": "Tooltip text on the link that dismisses the notification"
-  },
-  "upgrade_notification_text": {
-    "message": "Markdown Here已更新",
-    "description": "Text on the notification shown when Markdown Here has been updated"
   }
 }

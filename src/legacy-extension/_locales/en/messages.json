@@ -54,18 +54,6 @@
     "message": "Dismiss this notification",
     "description": "Text that shows when the user hovers over the 'X' that will close the prompt"
   },
-  "upgrade_notification_text": {
-    "message": "Markdown Here updated!",
-    "description": "Text on the notification shown when Markdown Here has been updated"
-  },
-  "upgrade_notification_changes_tooltip": {
-    "message": "Click to see the changes in this release",
-    "description": "Tooltip text on the link that opens the changes list"
-  },
-  "upgrade_notification_dismiss_tooltip": {
-    "message": "Dismiss this notification",
-    "description": "Tooltip text on the link that dismisses the notification"
-  },
   "nothing_to_render": {
     "message": "Nothing found to render or revert",
     "description": "Error message shown to user if there's nothing found to revert or render."
@@ -289,10 +277,6 @@
   "currently_in_use": {
     "message": "Currently in use",
     "description": "Indicates the syntax highlighting theme that the user is currently using"
-  },
-  "new_changelist_items": {
-    "message": "NEW",
-    "description": "Used to highlight the part of the changelist that is new. There will typically be multiple items in the list, so this should be considered plural."
   },
   "options_page__header_anchors_enabled_label": {
     "message": "<b>Enable automatic header anchors.</b>",

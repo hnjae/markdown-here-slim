@@ -61,48 +61,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     contexts: ["editable"],
     title: Utils.getMessage("context_menu_item"),
   });
-
-  // Note: If we find that the upgrade info page opens too often, we may
-  // need to add delays. See: https://github.com/adam-p/markdown-here/issues/119
-  upgradeCheck();
 });
-
-function upgradeCheck() {
-  OptionsStore.get((options) => {
-    var appManifest = chrome.runtime.getManifest();
-
-    var optionsURL = "/common/options.html";
-
-    if (typeof options["last-version"] === "undefined") {
-      // Update our last version. Only when the update is complete will we take
-      // the next action, to make sure it doesn't happen every time we start up.
-      OptionsStore.set({ "last-version": appManifest.version }, () => {
-        // This is the very first time the extensions has been run, so show the
-        // options page.
-        chrome.tabs.create({ url: Utils.getLocalURL(optionsURL) });
-      });
-    } else if (options["last-version"] !== appManifest.version) {
-      // Update our last version. Only when the update is complete will we take
-      // the next action, to make sure it doesn't happen every time we start up.
-      OptionsStore.set({ "last-version": appManifest.version }, () => {
-        // The extension has been newly updated
-        actionApi.setPopup(
-          {
-            popup: Utils.getLocalURL("/chrome/upgrade-notification-popup.html"),
-          },
-          () => {
-            try {
-              actionApi.openPopup();
-            } catch (e) {
-              // Firefox won't allow us to open a popup programmatically (i.e., in the absence of a user gesture)
-              console.error("Failed to open upgrade notification popup:", e);
-            }
-          },
-        );
-      });
-    }
-  });
-}
 
 // Handle context menu clicks.
 menuApi.onClicked.addListener(async (info, tab) => {
