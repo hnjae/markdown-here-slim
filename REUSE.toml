@@ -4,6 +4,7 @@ version = 1
 path = [
   "src/extension/chrome/manifest.json",
   "src/extension/firefox/manifest.json",
+  "src/extension/thunderbird/manifest.json",
   "src/legacy-extension/**",
 ]
 precedence = "closest"

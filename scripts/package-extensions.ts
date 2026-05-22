@@ -12,9 +12,12 @@ const distRoot = path.join(projectRoot, "dist");
 
 await mkdir(distRoot, { recursive: true });
 
-async function packageExtension(targetName: string): Promise<void> {
+async function packageExtension(
+  targetName: string,
+  archiveExtension = "zip",
+): Promise<void> {
   const targetOutput = path.join(distRoot, targetName);
-  const targetZip = path.join(distRoot, `${targetName}.zip`);
+  const targetZip = path.join(distRoot, `${targetName}.${archiveExtension}`);
 
   const output = createWriteStream(targetZip);
   const archive = archiver("zip", { zlib: { level: 9 } });
@@ -35,3 +38,4 @@ async function packageExtension(targetName: string): Promise<void> {
 
 await packageExtension("chrome");
 await packageExtension("firefox");
+await packageExtension("thunderbird", "xpi");

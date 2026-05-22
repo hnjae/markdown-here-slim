@@ -18,6 +18,10 @@ if (typeof browser === "undefined") {
 // `background.service_worker` (manifest V3 in Chrome).
 var backgroundPage = !!location.hash;
 
+const actionApi = chrome.action || chrome.browserAction;
+const composeActionApi = chrome.composeAction;
+const menuApi = chrome.contextMenus || chrome.menus;
+
 if (!backgroundPage) {
   // When loaded via a background page, the support scripts are already
   // present. When loaded via a service worker, we need to import them.
@@ -52,7 +56,7 @@ chrome.runtime.onInstalled.addListener((details) => {
 
   // Create the context menu that will signal our main code.
   // This must be called only once, when installed or updated, so we do it here.
-  chrome.contextMenus.create({
+  menuApi.create({
     id: "markdown-here-context-menu",
     contexts: ["editable"],
     title: Utils.getMessage("context_menu_item"),
@@ -82,13 +86,13 @@ function upgradeCheck() {
       // the next action, to make sure it doesn't happen every time we start up.
       OptionsStore.set({ "last-version": appManifest.version }, () => {
         // The extension has been newly updated
-        chrome.action.setPopup(
+        actionApi.setPopup(
           {
             popup: Utils.getLocalURL("/chrome/upgrade-notification-popup.html"),
           },
           () => {
             try {
-              chrome.action.openPopup();
+              actionApi.openPopup();
             } catch (e) {
               // Firefox won't allow us to open a popup programmatically (i.e., in the absence of a user gesture)
               console.error("Failed to open upgrade notification popup:", e);
@@ -101,7 +105,7 @@ function upgradeCheck() {
 }
 
 // Handle context menu clicks.
-chrome.contextMenus.onClicked.addListener(async (info, tab) => {
+menuApi.onClicked.addListener(async (info, tab) => {
   await handleActionClick(tab, info);
 });
 
@@ -157,7 +161,52 @@ chrome.runtime.onMessage.addListener((request, sender, responseCallback) => {
 
 // Add the browserAction (the button in the browser toolbar) listener.
 // This also handles the _execute_action keyboard command automatically.
-chrome.action.onClicked.addListener(async (tab) => {
+actionApi.onClicked.addListener(async (tab) => {
+  await handleActionClick(tab);
+});
+
+if (composeActionApi) {
+  composeActionApi.onClicked.addListener(async (tab) => {
+    await handleActionClick(tab);
+  });
+}
+
+async function executeContentScript(tabId, script) {
+  if (chrome.scripting?.executeScript && !composeActionApi) {
+    return chrome.scripting.executeScript({
+      target: { tabId: tabId },
+      ...script,
+    });
+  }
+
+  if (script.func) {
+    return chrome.tabs.executeScript(tabId, {
+      code: `(${script.func})()`,
+    });
+  }
+
+  if (script.files) {
+    const results = [];
+
+    for (const file of script.files) {
+      results.push(
+        ...(await chrome.tabs.executeScript(tabId, {
+          file: file.replace(/^\//, ""),
+        })),
+      );
+    }
+
+    return results;
+  }
+
+  throw new Error("Unsupported script injection request");
+}
+
+chrome.commands.onCommand.addListener(async (command, tab) => {
+  if (command !== "_execute_action" || !tab) {
+    return;
+  }
+
   await handleActionClick(tab);
 });
 
@@ -227,15 +276,14 @@ const Injector = {
   // to inject the scripts multiple times.
   async checkAndMarkInjected(tabId) {
     try {
-      const results = await chrome.scripting.executeScript({
-        target: { tabId: tabId },
+      const results = await executeContentScript(tabId, {
         func: () => {
           const alreadyInjected = window.markdownHereInjected;
           window.markdownHereInjected = true;
           return !!alreadyInjected;
         },
       });
-      return results?.[0] && results[0].result === true;
+      return results?.[0]?.result === true || results?.[0] === true;
     } catch (_e) {
       // Tab might not be accessible
       return false;
@@ -252,8 +300,7 @@ const Injector = {
 
       // Inject files in order
       for (const script of this.CONTENT_SCRIPTS) {
-        await chrome.scripting.executeScript({
-          target: { tabId: tabId },
+        await executeContentScript(tabId, {
           files: [script],
         });
       }

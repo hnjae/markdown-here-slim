@@ -43,6 +43,18 @@ const extensionTargets: ExtensionTarget[] = [
     output: path.join(distRoot, "firefox"),
     excludeBackgroundPage: false,
   },
+  {
+    name: "thunderbird",
+    manifest: path.join(
+      projectRoot,
+      "src",
+      "extension",
+      "thunderbird",
+      "manifest.json",
+    ),
+    output: path.join(distRoot, "thunderbird"),
+    excludeBackgroundPage: false,
+  },
 ];
 
 const complianceEntries = [
