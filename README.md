@@ -1,5 +1,11 @@
 # markdown-here-slim
 
+## About This Fork
+
+`markdown-here-slim` is a fork of [Markdown Here](https://github.com/adam-p/markdown-here), originally created by Adam Pritchard and maintained by its contributors.
+
+This project preserves and builds on the original Markdown Here work while focusing on a slimmer, maintained extension package for current Chrome, Firefox, and Thunderbird use. Upstream-derived files are kept under `src/legacy-extension`, and upstream contributor, copyright, and license records are preserved in `docs/upstream/`, `NOTICE.md`, and the file-level REUSE metadata.
+
 ## Build
 
 ```sh
@@ -51,25 +57,16 @@ For local use:
 
 ## License
 
-Unless a file is marked otherwise in [`REUSE.toml`](REUSE.toml), this
-project's files and modifications are distributed under `AGPL-3.0-or-later`.
+Unless a file is marked otherwise in [`REUSE.toml`](REUSE.toml), this project's files and modifications are distributed under `AGPL-3.0-or-later`.
 
-Some files are derived from upstream Markdown Here or third-party projects and
-keep their original copyright and license notices. Full license texts are stored
-in [`LICENSES/`](LICENSES/). Upstream contributor and historical records are
-preserved under [`docs/upstream/`](docs/upstream/) and summarized in
-[`NOTICE.md`](NOTICE.md).
+Some files retain upstream or third-party copyright and license notices. Full license texts are stored in [`LICENSES/`](LICENSES/), and attribution records are summarized in [`NOTICE.md`](NOTICE.md).
 
 ### Code
 
-Original Markdown Here code remains subject to the upstream MIT License notice.
-This project's modifications are licensed under `AGPL-3.0-or-later` unless
-file-level REUSE metadata says otherwise.
+Original Markdown Here code remains subject to the upstream MIT License notice. This project's modifications are licensed under `AGPL-3.0-or-later` unless file-level REUSE metadata says otherwise.
 
 ### Logo
 
-The extension logo and toolbar icon are based on OpenMoji `E25D` ("edit") by
-Kai Wanschura / OpenMoji, licensed under `CC-BY-SA-4.0`.
+The extension logo and toolbar icon are based on OpenMoji `E25D` ("edit") by Kai Wanschura / OpenMoji, licensed under `CC-BY-SA-4.0`.
 
-The source SVG files are stored under [`assets/openmoji/`](assets/openmoji/).
-Chrome PNG icons are generated from those SVGs during the build.
+The source SVG files are stored under [`assets/openmoji/`](assets/openmoji/). Chrome PNG icons are generated from those SVGs during the build.
