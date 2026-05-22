@@ -2,6 +2,7 @@
 .devenv
 .direnv
 /.pre-commit-config.yaml
+/biome.json
 
 # Installed npm dependencies:
 node_modules

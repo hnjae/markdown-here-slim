@@ -7,22 +7,70 @@
   pkgs,
   ...
 }:
+let
+  biomeSettings = {
+    "$schema" = "https://biomejs.dev/schemas/2.4.14/schema.json";
+
+    formatter = {
+      indentStyle = "space";
+      indentWidth = 2;
+    };
+
+    javascript.formatter = {
+      indentStyle = "space";
+      indentWidth = 2;
+    };
+
+    json.formatter = {
+      indentStyle = "space";
+      indentWidth = 2;
+    };
+
+    css.formatter = {
+      indentStyle = "space";
+      indentWidth = 2;
+    };
+  };
+in
 {
+  files."biome.json".json = biomeSettings;
+
   packages = [
-    pkgs.nodejs_24
-    pkgs.pnpm
     pkgs.unzip
+    pkgs.biome
   ];
+
+  languages = {
+    javascript = {
+      enable = true;
+      package = pkgs.nodejs-slim;
+      pnpm.enable = true;
+      lsp.package = pkgs.typescript-go;
+    };
+    typescript = {
+      enable = true;
+      lsp.package = pkgs.typescript-go;
+    };
+
+    nix.enable = true;
+  };
 
   treefmt = {
     enable = true;
     config = {
-      settings.excludes = [
-        "*.lock"
-        "pnpm-lock.yaml"
-      ];
+      settings = {
+        excludes = [
+          "*.lock"
+          "pnpm-lock.yaml"
+        ];
+      };
 
       programs = {
+        biome = {
+          enable = true;
+          settings = biomeSettings;
+        };
+
         # Other formatter:
         just.enable = true;
         nixfmt.enable = true;
@@ -69,6 +117,11 @@
     "ci:git-hooks" = {
       exec = "${lib.getExe config.git-hooks.package} run --all-files";
       after = [ "devenv:files" ];
+      before = [ "ci:check" ];
+    };
+
+    "ci:typecheck" = {
+      exec = "pnpm run typecheck";
       before = [ "ci:check" ];
     };
   };
