@@ -1,5 +1,7 @@
 # markdown-here-slim
 
+This repository is archived as a preserved fork of [Markdown Here](https://github.com/adam-p/markdown-here). For a Thunderbird-first clean implementation that does not reuse Markdown Here code, see [`md-compose-tb`](https://github.com/hnjae/md-compose-tb). That project is the preferred direction for reliable Markdown-to-HTML email composition in Thunderbird.
+
 ## About This Fork
 
 `markdown-here-slim` is a fork of [Markdown Here](https://github.com/adam-p/markdown-here), originally created by Adam Pritchard and maintained by its contributors.
