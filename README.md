@@ -209,7 +209,9 @@ Unless a file is marked otherwise in [`REUSE.toml`](REUSE.toml), this fork's
 project-specific files and modifications are distributed under
 `AGPL-3.0-or-later`. Upstream Markdown Here material and third-party files keep
 their original copyright and license notices. Full license texts are stored in
-[`LICENSES/`](LICENSES/).
+[`LICENSES/`](LICENSES/). Upstream contributor and historical records are
+preserved under [`docs/upstream/`](docs/upstream/) and summarized in
+[`NOTICE.md`](NOTICE.md).
 
 ### Code
 
@@ -219,7 +221,7 @@ This fork's project-specific files and modifications are licensed under
 
 ### Logo
 
-Copyright 2015, [Austin Anderson](https://www.angerson.org/). Licensed to Markdown Here under the [MDH contributor license agreement](https://github.com/adam-p/markdown-here/blob/master/CLA-individual.md).
+Copyright 2015, [Austin Anderson](https://www.angerson.org/). Licensed to Markdown Here under the [MDH contributor license agreement](docs/upstream/CLA-individual.md).
 
 ### Other images
 

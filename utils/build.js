@@ -20,7 +20,8 @@ var CHROME_EXTENSION = file.path.join(DIST_DIR, 'chrome.zip');
 var FIREFOX_EXTENSION = file.path.join(DIST_DIR, 'firefox.zip');
 var THUNDERBIRD_EXTENSION = file.path.join(DIST_DIR, 'thunderbird.xpi');
 var LICENSES_DIR = file.path.join(BASE_DIR, 'LICENSES');
-var ROOT_COMPLIANCE_FILES = ['LICENSE', 'REUSE.toml', 'README.md', 'CLA-individual.md', 'CLA-entity.md'];
+var UPSTREAM_DOCS_DIR = file.path.join(BASE_DIR, 'docs', 'upstream');
+var ROOT_COMPLIANCE_FILES = ['LICENSE', 'NOTICE.md', 'REUSE.toml', 'README.md'];
 
 var CHROME_INPUT = [/^manifest\.json$/, /^common(\\|\/)/, /^chrome(\\|\/)/, /^_locales(\\|\/)/];
 var FIREFOX_INPUT = CHROME_INPUT;
@@ -81,15 +82,25 @@ function addComplianceFiles(zip) {
     }
   });
 
-  if (!fs.existsSync(LICENSES_DIR)) {
+  if (fs.existsSync(LICENSES_DIR)) {
+    fs.readdirSync(LICENSES_DIR).forEach(function(licenseFile) {
+      var fullPath = file.path.join(LICENSES_DIR, licenseFile);
+      if (fs.statSync(fullPath).isFile()) {
+        zip.file(fullPath, { name: 'LICENSES/' + licenseFile });
+      }
+    });
+  }
+
+  if (!fs.existsSync(UPSTREAM_DOCS_DIR)) {
     return;
   }
 
-  fs.readdirSync(LICENSES_DIR).forEach(function(licenseFile) {
-    var fullPath = file.path.join(LICENSES_DIR, licenseFile);
-    if (fs.statSync(fullPath).isFile()) {
-      zip.file(fullPath, { name: 'LICENSES/' + licenseFile });
-    }
+  file.walkSync(UPSTREAM_DOCS_DIR, function(dirPath, dirs, files) {
+    files.forEach(function(upstreamFile) {
+      var fullPath = file.path.join(dirPath, upstreamFile);
+      var relativePath = file.path.relativePath(BASE_DIR, fullPath);
+      zip.file(fullPath, { name: relativePath });
+    });
   });
 }
 

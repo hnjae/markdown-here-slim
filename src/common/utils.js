@@ -430,7 +430,7 @@ function getTopURL(win, justHostname) {
 // As an alternative, we can use a local XHR request/response.
 // This function just does a simple, local async request and then calls the callback.
 function asyncCallbackXHR(callback) {
-  fetch(getLocalURL('/common/CHANGES.md'), {method: 'HEAD'})
+  fetch(getLocalURL('/docs/upstream/CHANGES.md'), {method: 'HEAD'})
     .then(callback)
     .catch(callback);
 }

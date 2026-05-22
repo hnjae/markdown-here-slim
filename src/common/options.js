@@ -363,7 +363,7 @@ function cssSyntaxSelectChange() {
 
 function loadChangelist() {
   Utils.getLocalFile(
-    Utils.getLocalURL('/common/CHANGES.md'),
+    Utils.getLocalURL('/docs/upstream/CHANGES.md'),
     'text',
     function(changes) {
       var markedOptions = {

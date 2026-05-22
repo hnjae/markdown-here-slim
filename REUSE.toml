@@ -11,6 +11,15 @@ SPDX-FileCopyrightText = [
 SPDX-License-Identifier = "MIT AND AGPL-3.0-or-later"
 
 [[annotations]]
+path = "docs/upstream/**"
+precedence = "override"
+SPDX-FileCopyrightText = [
+  "2013-2016 Adam Pritchard",
+  "Contributors to Markdown Here",
+]
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
 path = ["src/common/images/*.png", "src/common/images/*.svg"]
 precedence = "closest"
 SPDX-FileCopyrightText = "2015 Austin Anderson"
