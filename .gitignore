@@ -3,10 +3,12 @@
 .direnv
 /.pre-commit-config.yaml
 
+# Installed npm dependencies:
 node_modules
 
-# Build directory
+# Build output:
 dist
 
-# Vite cache
+# Caches:
 .vite
+.rumdl_cache
